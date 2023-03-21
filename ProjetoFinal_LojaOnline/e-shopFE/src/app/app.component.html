@@ -1,0 +1,123 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container">
+    <a class="navbar-brand" routerLink='Home'>Home</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Products</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Categories</a>
+        </li>
+        <li class="nav-item dropdown">
+          <button type="button" class="btn btn-primary position-relative" data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+            <i class="bi bi-cart"></i>
+            <!-- <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+              2+
+              <span class="visually-hidden">unread messages</span>
+            </span> -->
+          </button>
+        </li>
+      </ul>
+      <div>
+        <button class="btn btn-outline-primary" type="submit">
+          <i class="bi bi-person-circle icon-blue align-left mx-auto"></i>
+          Login</button>
+      </div>
+    </div>
+  </div>
+</nav>
+<!--Mini Cart-->
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+  <div class="offcanvas-header">
+    <h5 id="offcanvasRightLabel">Mini Cart</h5>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <ul class="list-group">
+      <li class="list-group-item"><img src="/images/pexels-cottonbro-studio-6153738.jpg" 
+        width="30" class="img-fluid me-1">Item 1 <i class="bi bi-x-circle-fill float-end"></i></li>
+      <li class="list-group-item"><img width="30" class="img-fluid me-1"
+          src="/images/pexels-harsch-shivam-2007647.jpg">Item 2 <i class="bi bi-x-circle-fill float-end"></i></li>
+    </ul>
+    <button type="button" class="btn btn-primary mt-2 float-end">Checkout</button>
+  </div>
+</div>
+<!--Mini Cart-->
+<div class="container-fluid" style="background-color: rgb(58, 175, 210);">
+  <div class="container d-lg-flex justify-content-between align-items-center ps-lg-4">
+    <div class="pb-lg-5 mb-lg-5 text-center text-lg-start text-lg-nowrap fw-bold">
+      <h1 class="h1 text-light fw-bold pb-1 from-start mt-3">Welcome to my Store</h1>
+      <h3 class="text-light fw-bold from-start delay-1 mt-3">Here you can find all sorts of tech produts</h3>
+      <p class="fs-lg text-light pb-3 from-start delay-2 mt-3">Mobile, PCs, Laptops, Consoles &amp; so much more. You name it, we got it!</p>
+      <div class="d-table scale-up delay-4 mx-auto mx-lg-0">
+        <a class="btn btn-primary" href="#">Shop Now<i class="ci-arrow-right ms-2 me-n1"></i></a>
+      </div>
+    </div>
+
+    <img class="img-fluid" src="/src/images/pexels-cottonbro-studio-6153738.jpg">
+  </div>
+</div>
+<div class="container mt-5">
+  <h3>Latest Products</h3>
+  <div class="card-group row">
+    <div class="card col-sm-3">
+      <img src="/images/pexels-cottonbro-studio-6153738.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Item 1</h5>
+        <p class="card-text">This is just an example of a short description.</p>
+        <div class="d-flex flex-row justify-content-center mt-auto">
+          <button class="btn btn-primary" type="button">Add to cart</button>
+        </div>
+      </div>
+    </div>
+    <div class="card col-sm-3">
+      <img src="/images/pexels-harsch-shivam-2007647.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Item 2</h5>
+        <p class="card-text">This is just an example of a short description.</p>
+        <div class="d-flex flex-row justify-content-center mt-auto">
+          <button class="btn btn-primary" type="button">Add to cart</button>
+        </div>
+      </div>
+    </div>
+    <div class="card col-sm-3">
+      <img src="/images/pexels-pixabay-256381.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Item 3</h5>
+        <p class="card-text">This is just an example of a short description.</p>
+        <div class="d-flex flex-row justify-content-center mt-auto">
+          <button class="btn btn-primary" type="button">Add to cart</button>
+        </div>
+      </div>
+    </div>
+    <div class="card col-sm-4">
+      <img src="/src/images/pexels-洋榤-郭-2399840.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Item 4</h5>
+        <p class="card-text">This is just an example of a short description.</p>
+        <div class="d-flex flex-row justify-content-center mt-auto">
+          <button class="btn btn-primary" type="button">Add to cart</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<div class="container-fluid mt-5" style="background-color: rgb(58, 175, 210);">
+  <div class="container d-lg-flex justify-content-between align-items-center ps-lg-4">
+    <div class="pb-lg-5 mb-lg-5 text-center text-lg-start text-lg-nowrap fw-bold">
+      <h1 class="h1 text-light fw-bold pb-1 from-start mt-5">Hurry up! Limited time offer.</h1>
+      <h3 class="text-light fw-bold from-start delay-1 mt-5">Top quality prodcuts for the best price!</h3>
+      <div class="d-table scale-up delay-4 mx-auto mx-lg-0 mt-5"><a class="btn btn-primary" href="#">Shop
+          Now<i class="ci-arrow-right ms-2 me-n1"></i></a></div>
+    </div>
+
+    <img class="img-fluid" src="fullwidthimage">
+  </div>
+</div>
