@@ -5,6 +5,7 @@ namespace e_shop.DbContexts
 {
     public class EShopContext : DbContext
     {
+        //ola joi
         public DbSet<User> User { get; set; } = null!;
 
         public DbSet<Roles> Roles { get; set; } = null!;

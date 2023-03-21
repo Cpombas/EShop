@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "fiYIepoBn7InQ7VgXB3T+gY6eoZXe/JDjCi6CVMfeVKDEbdrdaBaOLLEOwLGMQ0TzHtceKI3WkTwB6eB3jQw4g==",
+  "dgSpecHash": "ZTNtA533LPtTz7Tovn7GziyRXiAaKfvrtDTc99Dl9uYDVT0XE31QhrPOPwQPjo/qwp4aIHmDEAhMHdzHlfhnOw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\cpomb\\Desktop\\ProjetoFinal_LojaOnline\\e-shopBE\\e-shop\\e-shop.csproj",
+  "projectFilePath": "C:\\Users\\cpomb\\Documents\\GitHub\\EShop\\ProjetoFinal_LojaOnline\\e-shopBE\\e-shop\\e-shop.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\cpomb\\.nuget\\packages\\automapper\\12.0.0\\automapper.12.0.0.nupkg.sha512",
     "C:\\Users\\cpomb\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.0\\automapper.extensions.microsoft.dependencyinjection.12.0.0.nupkg.sha512",

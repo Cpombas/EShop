@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\cpomb\\Desktop\\ProjetoFinal_LojaOnline\\e-shopBE\\e-shop\\e-shop.csproj": {}
+    "C:\\Users\\cpomb\\Documents\\GitHub\\EShop\\ProjetoFinal_LojaOnline\\e-shopBE\\e-shop\\e-shop.csproj": {}
   },
   "projects": {
-    "C:\\Users\\cpomb\\Desktop\\ProjetoFinal_LojaOnline\\e-shopBE\\e-shop\\e-shop.csproj": {
+    "C:\\Users\\cpomb\\Documents\\GitHub\\EShop\\ProjetoFinal_LojaOnline\\e-shopBE\\e-shop\\e-shop.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\cpomb\\Desktop\\ProjetoFinal_LojaOnline\\e-shopBE\\e-shop\\e-shop.csproj",
+        "projectUniqueName": "C:\\Users\\cpomb\\Documents\\GitHub\\EShop\\ProjetoFinal_LojaOnline\\e-shopBE\\e-shop\\e-shop.csproj",
         "projectName": "e-shop",
-        "projectPath": "C:\\Users\\cpomb\\Desktop\\ProjetoFinal_LojaOnline\\e-shopBE\\e-shop\\e-shop.csproj",
+        "projectPath": "C:\\Users\\cpomb\\Documents\\GitHub\\EShop\\ProjetoFinal_LojaOnline\\e-shopBE\\e-shop\\e-shop.csproj",
         "packagesPath": "C:\\Users\\cpomb\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\cpomb\\Desktop\\ProjetoFinal_LojaOnline\\e-shopBE\\e-shop\\obj\\",
+        "outputPath": "C:\\Users\\cpomb\\Documents\\GitHub\\EShop\\ProjetoFinal_LojaOnline\\e-shopBE\\e-shop\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\cpomb\\AppData\\Roaming\\NuGet\\NuGet.Config",
