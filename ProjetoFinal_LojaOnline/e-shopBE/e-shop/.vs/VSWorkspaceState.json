@@ -1,0 +1,10 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\DbContexts",
+    "\\Entities",
+    "\\Models"
+  ],
+  "SelectedNode": "\\Entities\\Roles.cs",
+  "PreviewInSolutionExplorer": false
+}

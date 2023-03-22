@@ -25,10 +25,10 @@ namespace e_shop.Entities
 
         public int Age { get; set; }
 
-        [MaxLength(100)]
+        [MaxLength(50)]
         public string? Email { get; set; }
 
-        [MaxLength(200)]
+        [MaxLength(100)]
         public string? Address { get; set; }
 
         [ForeignKey("RoleId")]

@@ -86,15 +86,15 @@ namespace e_shop.Controllers
             return order == null ? NotFound() : Ok(new ListOrdersDTO(order));
         }
 
-        [HttpGet("Order History by UserId")]
+        //[HttpGet("Order History by UserId")]
 
-        public async Task<IActionResult> GetOrderHistoryByUserId(int id)
-        {
-            var order = await _context.OrdersHistory.
-                FirstOrDefaultAsync(o => o.UserId == id);
+        //public async Task<IActionResult> GetOrderHistoryByUserId(int id)
+        //{
+        //    var order = await _context.OrdersHistory.
+        //        FirstOrDefaultAsync(o => o.UserId == id);
 
-            return order == null ? NotFound() : Ok(new ListOrderHistoryDTO(order));
-        }
+        //    return order == null ? NotFound() : Ok(new ListOrderHistoryDTO(order));
+        //}
 
         [HttpGet("Ordered Items by ItemId")]
 
@@ -158,7 +158,6 @@ namespace e_shop.Controllers
             var newOrder = new OrderHistory
             {
                 OrderId = order.OrderId,
-                UserId = order.UserId,
                 DateOfDelivery = order.DateOfDelivery,
                 TotalPrice = order.TotalPrice
 

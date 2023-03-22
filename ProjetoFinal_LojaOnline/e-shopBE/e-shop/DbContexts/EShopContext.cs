@@ -5,7 +5,6 @@ namespace e_shop.DbContexts
 {
     public class EShopContext : DbContext
     {
-        //ola joi
         public DbSet<User> User { get; set; } = null!;
 
         public DbSet<Roles> Roles { get; set; } = null!;
@@ -19,6 +18,8 @@ namespace e_shop.DbContexts
         public DbSet<OrderItems> OrderItems { get; set; } = null!;
 
         public DbSet<OrderHistory> OrdersHistory { get; set; } = null!;
+
+        public DbSet<PaymentDetail> PaymentDetails { get; set; } = null!;
 
         public EShopContext(DbContextOptions<EShopContext> options)
             : base(options)

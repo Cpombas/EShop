@@ -12,7 +12,7 @@ using e_shop.DbContexts;
 namespace e_shop.Migrations
 {
     [DbContext(typeof(EShopContext))]
-    [Migration("20230309164455_InitialCreate")]
+    [Migration("20230322160630_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -39,7 +39,7 @@ namespace e_shop.Migrations
 
                     b.HasKey("CategoryId");
 
-                    b.ToTable("Categories");
+                    b.ToTable("Category");
                 });
 
             modelBuilder.Entity("e_shop.Entities.Items", b =>
@@ -49,6 +49,9 @@ namespace e_shop.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ItemId"), 1L, 1);
+
+                    b.Property<string>("Brand")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
@@ -89,10 +92,10 @@ namespace e_shop.Migrations
 
             modelBuilder.Entity("e_shop.Entities.OrderItems", b =>
                 {
-                    b.Property<int>("ItemId")
+                    b.Property<int>("OrderId")
                         .HasColumnType("int");
 
-                    b.Property<int>("OrderId")
+                    b.Property<int>("ItemId")
                         .HasColumnType("int");
 
                     b.Property<float>("Price")
@@ -101,9 +104,9 @@ namespace e_shop.Migrations
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
 
-                    b.HasKey("ItemId");
+                    b.HasKey("OrderId");
 
-                    b.HasIndex("OrderId");
+                    b.HasIndex("ItemId");
 
                     b.ToTable("OrderItems");
                 });
@@ -140,23 +143,51 @@ namespace e_shop.Migrations
                     b.ToTable("Orders");
                 });
 
-            modelBuilder.Entity("e_shop.Entities.Payments", b =>
+            modelBuilder.Entity("e_shop.Entities.PaymentDetail", b =>
                 {
-                    b.Property<int>("UserId")
+                    b.Property<int>("PaymentDetailId")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PaymentDetailId"), 1L, 1);
 
                     b.Property<string>("Address")
                         .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
-                    b.Property<int>("CardNumber")
+                    b.Property<string>("CardNumber")
+                        .IsRequired()
+                        .HasMaxLength(16)
+                        .HasColumnType("nvarchar(16)");
+
+                    b.Property<string>("CardOwnerName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
                         .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("ExpirationDate")
+                        .IsRequired()
+                        .HasMaxLength(5)
+                        .HasColumnType("nvarchar(5)");
+
+                    b.Property<string>("SecurityCode")
+                        .IsRequired()
+                        .HasMaxLength(3)
+                        .HasColumnType("nvarchar(3)");
+
+                    b.Property<int>("UserId")
                         .HasColumnType("int");
 
-                    b.HasKey("UserId");
+                    b.HasKey("PaymentDetailId");
 
-                    b.ToTable("Payments");
+                    b.HasIndex("UserId");
+
+                    b.ToTable("PaymentDetails");
                 });
 
             modelBuilder.Entity("e_shop.Entities.Roles", b =>
@@ -167,8 +198,8 @@ namespace e_shop.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RoleId"), 1L, 1);
 
-                    b.Property<int>("RoleName")
-                        .HasColumnType("int");
+                    b.Property<string>("RoleName")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("RoleId");
 
@@ -184,12 +215,15 @@ namespace e_shop.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UserId"), 1L, 1);
 
                     b.Property<string>("Address")
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
-
-                    b.Property<string>("Email")
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
+
+                    b.Property<int>("Age")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Email")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("FirstName")
                         .HasMaxLength(50)
@@ -215,13 +249,13 @@ namespace e_shop.Migrations
 
                     b.HasIndex("RoleId");
 
-                    b.ToTable("Users");
+                    b.ToTable("User");
                 });
 
             modelBuilder.Entity("e_shop.Entities.Items", b =>
                 {
                     b.HasOne("e_shop.Entities.Category", "Category")
-                        .WithMany()
+                        .WithMany("ItemsInCategory")
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -270,7 +304,7 @@ namespace e_shop.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("e_shop.Entities.Payments", b =>
+            modelBuilder.Entity("e_shop.Entities.PaymentDetail", b =>
                 {
                     b.HasOne("e_shop.Entities.User", "User")
                         .WithMany()
@@ -290,6 +324,11 @@ namespace e_shop.Migrations
                         .IsRequired();
 
                     b.Navigation("Role");
+                });
+
+            modelBuilder.Entity("e_shop.Entities.Category", b =>
+                {
+                    b.Navigation("ItemsInCategory");
                 });
 #pragma warning restore 612, 618
         }
