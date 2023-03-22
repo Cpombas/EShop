@@ -550,3 +550,4 @@ C:\Users\cpomb\Documents\GitHub\EShop\ProjetoFinal_LojaOnline\e-shopBE\e-shop\ob
 C:\Users\cpomb\Documents\GitHub\EShop\ProjetoFinal_LojaOnline\e-shopBE\e-shop\obj\Debug\net6.0\e-shop.pdb
 C:\Users\cpomb\Documents\GitHub\EShop\ProjetoFinal_LojaOnline\e-shopBE\e-shop\obj\Debug\net6.0\e-shop.genruntimeconfig.cache
 C:\Users\cpomb\Documents\GitHub\EShop\ProjetoFinal_LojaOnline\e-shopBE\e-shop\obj\Debug\net6.0\ref\e-shop.dll
+C:\Users\cpomb\Documents\GitHub\EShop\ProjetoFinal_LojaOnline\e-shopBE\e-shop\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

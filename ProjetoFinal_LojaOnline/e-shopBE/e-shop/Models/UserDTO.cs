@@ -21,7 +21,7 @@ namespace e_shop.Models
 
         public string? Address { get; set; }
 
-        public string? Role { get; set; }
+        public int RoleId { get; set; }
 
         public ListUserDTO() { }
 
@@ -34,7 +34,7 @@ namespace e_shop.Models
             Age = user.Age;
             Email = user.Email;
             Address = user.Address;
-            Role = user.Role.RoleName;
+            RoleId = user.Role.RoleId;
         }
 
         public class CreateUserDTO
