@@ -130,13 +130,13 @@ namespace e_shop.Controllers
         [HttpPost("Ordered Item")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> CreateOrderedItem(CreateOrderItemsDTO order)
+        public async Task<IActionResult> CreateOrderedItem(CreateOrderItemsDTO order, ListOrdersDTO orderId)
         {
             if (!ModelState.IsValid) return BadRequest();
 
             var newOrder = new OrderItems
             {
-                OrderId = order.OrderId,
+                OrderId = orderId.OrderId,
                 ItemId = order.ItemId,
                 Quantity = order.Quantity,
                 Price = order.Price
@@ -151,13 +151,13 @@ namespace e_shop.Controllers
         [HttpPost("Order History")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> CreateOrdersHistory(CreateOrderHistoryDTO order)
+        public async Task<IActionResult> CreateOrdersHistory(CreateOrderHistoryDTO order, ListOrdersDTO orderId)
         {
             if (!ModelState.IsValid) return BadRequest();
 
             var newOrder = new OrderHistory
             {
-                OrderId = order.OrderId,
+                OrderId = orderId.OrderId,
                 DateOfDelivery = order.DateOfDelivery,
                 TotalPrice = order.TotalPrice
 
@@ -181,7 +181,9 @@ namespace e_shop.Controllers
 
             var orderDB = _context.Orders.Find(id);
 
-            orderDB.OrderId = order.OrderId;
+            orderDB.DateOfOrder = order.DateOfOrder;
+            orderDB.DateOfDelivery = order.DateOfDelivery;
+            orderDB.TotalPrice = order.TotalPrice;
             orderDB.OrderStatus = order.OrderStatus;
 
             _context.Entry(orderDB).State = EntityState.Modified;
@@ -201,9 +203,11 @@ namespace e_shop.Controllers
 
             if (!ModelState.IsValid) return BadRequest();
 
-            var orderDB = _context.Orders.Find(id);
+            var orderDB = _context.OrderItems.Find(id);
 
-            orderDB.OrderId = order.OrderId;
+            orderDB.ItemId = order.ItemId;
+            orderDB.Quantity = order.Quantity;
+            orderDB.Price = order.Price;
 
             _context.Entry(orderDB).State = EntityState.Modified;
 
@@ -222,9 +226,10 @@ namespace e_shop.Controllers
 
             if (!ModelState.IsValid) return BadRequest();
 
-            var orderDB = _context.Orders.Find(id);
+            var orderDB = _context.OrdersHistory.Find(id);
 
-            orderDB.OrderId = order.OrderId;
+            orderDB.DateOfDelivery = order.DateOfDelivery;
+            orderDB.TotalPrice = order.TotalPrice;
 
             _context.Entry(orderDB).State = EntityState.Modified;
 
