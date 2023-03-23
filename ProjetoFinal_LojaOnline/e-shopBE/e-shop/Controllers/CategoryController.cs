@@ -32,8 +32,8 @@ namespace e_shop.Controllers
         [HttpGet("id")]
 
         public async Task<IActionResult> GetCategoryByID(int id)
-        {
-            var category = await _context.Category.
+        {                                           //CAN I DO THIS??
+            var category = await _context.Category.//Include("ItemsInCategory").
                 FirstOrDefaultAsync(c => c.CategoryId == id);
 
             return category == null ? NotFound() : Ok(new ListCategoryDTO(category));
@@ -79,7 +79,6 @@ namespace e_shop.Controllers
             var categoryDB = _context.Category.Find(id);
 
             categoryDB.Name = category.Name;
-            categoryDB.CategoryId = category.CategoryId;
 
             _context.Entry(categoryDB).State = EntityState.Modified;
 
