@@ -2,9 +2,12 @@
 using e_shop.Entities;
 using e_shop.Models;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Net;
 using static e_shop.Models.ListUserDTO;
 
 namespace e_shop.Controllers
@@ -58,6 +61,11 @@ namespace e_shop.Controllers
             {
                 UserName = user.UserName,
                 Password = user.Password,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Age = user.Age,
+                Email = user.Email,
+                Address = user.Address,
                 RoleId = user.RoleId
             };
 
@@ -77,9 +85,14 @@ namespace e_shop.Controllers
 
             if (!ModelState.IsValid) return BadRequest();
 
-            var userDB = _context.User.Find(id);
+            var userDB = await _context.User.FindAsync(id);
 
             userDB.UserName = user.UserName;
+            userDB.FirstName = user.FirstName;
+            userDB.LastName = user.LastName;
+            userDB.Age = user.Age;
+            userDB.Email = user.Email;
+            userDB.Address = user.Address;
             userDB.RoleId = user.RoleId;
 
             _context.Entry(userDB).State = EntityState.Modified;
@@ -88,6 +101,29 @@ namespace e_shop.Controllers
 
             return NoContent();
         }
+
+        //CAN IT BE DONE LIKE THIS??
+        //
+        //[HttpPatch("id")]
+        //[ProducesResponseType(StatusCodes.Status204NoContent)]
+        //[ProducesResponseType(StatusCodes.Status400BadRequest)]
+        //public async Task<ActionResult> PartiallyUpdateUser(int id,
+        //    UpdateUserDTO user, JsonPatchDocument<UpdateUserDTO> patchDocument)
+        //{
+        //    if (id != user.UserId) return BadRequest();
+
+        //    if (!ModelState.IsValid) return BadRequest();
+
+        //    var userDbToPatch = user;
+        //    patchDocument.ApplyTo(userDbToPatch);
+
+        //    _context.Entry(userDbToPatch).State = EntityState.Modified;
+
+        //    await _context.SaveChangesAsync();
+
+        //    return NoContent();
+        //}
+
 
         [HttpDelete("id")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]

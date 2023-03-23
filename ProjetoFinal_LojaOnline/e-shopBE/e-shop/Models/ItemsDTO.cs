@@ -15,7 +15,7 @@ namespace e_shop.Models
 
         public string? Description { get; set; }
 
-        public string Category { get; set; }
+        public int CategoryId { get; set; }
 
         public ListItemsDTO() { }
         public ListItemsDTO(Items items)
@@ -25,7 +25,7 @@ namespace e_shop.Models
             Price = items.Price;
             Brand = items.Brand;
             Description = items.Description;
-            Category = items.Category.Name;
+            CategoryId = items.CategoryId;
         }
     }
 

@@ -34,7 +34,7 @@ namespace e_shop.Models
             Age = user.Age;
             Email = user.Email;
             Address = user.Address;
-            RoleId = user.Role.RoleId;
+            RoleId = user.RoleId;
         }
 
         public class CreateUserDTO
