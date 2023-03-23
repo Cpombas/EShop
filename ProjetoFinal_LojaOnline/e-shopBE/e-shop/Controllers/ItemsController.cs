@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Drawing.Drawing2D;
 
 namespace e_shop.Controllers
 {
@@ -57,6 +58,9 @@ namespace e_shop.Controllers
             var newItem = new Items
             {
                 Name = item.Name,
+                Price = item.Price,
+                Brand = item.Brand,
+                Description = item.Description,
                 CategoryId = item.CategoryId
             };
 
@@ -79,6 +83,9 @@ namespace e_shop.Controllers
             var itemDB = _context.Items.Find(id);
 
             itemDB.Name = item.Name;
+            itemDB.Price = item.Price;
+            itemDB.Brand = item.Brand;
+            itemDB.Description = item.Description;
             itemDB.CategoryId = item.CategoryId;
 
             _context.Entry(itemDB).State = EntityState.Modified;
