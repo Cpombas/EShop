@@ -48,7 +48,7 @@ namespace e_shop.Controllers
             return category == null ? NotFound() : Ok(new ListCategoryDTO(category));
         }
 
-        [HttpPost]
+        [HttpPost()]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> CreateCategory(CreateCategoryDTO category)

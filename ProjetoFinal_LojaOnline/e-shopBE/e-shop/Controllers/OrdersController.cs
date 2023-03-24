@@ -130,13 +130,12 @@ namespace e_shop.Controllers
         [HttpPost("Ordered Item")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> CreateOrderedItem(CreateOrderItemsDTO order, ListOrdersDTO orderId)
+        public async Task<IActionResult> CreateOrderedItem(CreateOrderItemsDTO order)
         {
             if (!ModelState.IsValid) return BadRequest();
 
             var newOrder = new OrderItems
             {
-                OrderId = orderId.OrderId,
                 ItemId = order.ItemId,
                 Quantity = order.Quantity,
                 Price = order.Price
@@ -151,13 +150,12 @@ namespace e_shop.Controllers
         [HttpPost("Order History")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> CreateOrdersHistory(CreateOrderHistoryDTO order, ListOrdersDTO orderId)
+        public async Task<IActionResult> CreateOrdersHistory(CreateOrderHistoryDTO order)
         {
             if (!ModelState.IsValid) return BadRequest();
 
             var newOrder = new OrderHistory
             {
-                OrderId = orderId.OrderId,
                 DateOfDelivery = order.DateOfDelivery,
                 TotalPrice = order.TotalPrice
 

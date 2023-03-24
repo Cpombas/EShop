@@ -9,16 +9,16 @@ namespace e_shop.Models
 
         public string Name { get; set; }
 
-        public ICollection<ListItemsDTO> ItemsInCategory { get; set; }
-            = new List<ListItemsDTO>();
+        //public ICollection<ListItemsDTO> ItemsInCategory { get; set; }
+        //    = new List<ListItemsDTO>();
 
-        public int NumberOfItemsInCategory
-        {
-            get
-            {
-                return ItemsInCategory.Count;
-            }
-        }
+        //public int NumberOfItemsInCategory
+        //{
+        //    get
+        //    {
+        //        return ItemsInCategory.Count;
+        //    }
+        //}
 
         public ListCategoryDTO() { }
 
@@ -33,8 +33,8 @@ namespace e_shop.Models
             [Required]
             public string? Name { get; set; }
 
-            public ICollection<ListItemsDTO> ItemsInCategory { get; set; }
-            = new List<ListItemsDTO>();
+            //public ICollection<ListItemsDTO> ItemsInCategory { get; set; }
+            //= new List<ListItemsDTO>();
         }
 
         public class UpdateCategoryDTO 
@@ -44,8 +44,8 @@ namespace e_shop.Models
             [Required]
             public string? Name { get; set; }
 
-            public ICollection<ListItemsDTO> ItemsInCategory { get; set; }
-            = new List<ListItemsDTO>();
+            //public ICollection<ListItemsDTO> ItemsInCategory { get; set; }
+            //= new List<ListItemsDTO>();
 
         }
     }
