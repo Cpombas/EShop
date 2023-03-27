@@ -4,11 +4,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace e_shop.Entities
 {
-    public class Items
+    public class Products
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int ItemId { get; set; }
+        public int ProductId { get; set; }
 
         [Required]
         [MaxLength(50)]
@@ -26,7 +26,7 @@ namespace e_shop.Entities
 
         public int CategoryId { get; set; }
 
-        //public Items(string name, float price)
+        //public Products(string name, float price)
         //{
         //    Name = name;
         //    Price = price;

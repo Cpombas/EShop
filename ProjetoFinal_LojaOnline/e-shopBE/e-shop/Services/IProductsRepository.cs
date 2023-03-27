@@ -1,6 +1,6 @@
 ﻿namespace e_shop.Services
 {
-    public interface IItemsRepository
+    public interface IProductsRepository
     {
     }
 }

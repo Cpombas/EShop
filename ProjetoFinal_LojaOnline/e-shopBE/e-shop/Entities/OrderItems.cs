@@ -12,7 +12,7 @@ namespace e_shop.Entities
         public int OrderId { get; set; }
 
         [ForeignKey("ItemId")]
-        public Items? Item { get; set; }
+        public Products? Item { get; set; }
 
         public int ItemId { get; set; }
 

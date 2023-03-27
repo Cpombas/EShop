@@ -2,7 +2,7 @@
 
 namespace e_shop.Profiles
 {
-    public class ItemsProfile : Profile
+    public class ProductProfile : Profile
     {
         //In case we need to map entities to models
     }

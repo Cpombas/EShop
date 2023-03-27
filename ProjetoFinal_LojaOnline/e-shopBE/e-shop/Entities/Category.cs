@@ -14,7 +14,7 @@ namespace e_shop.Entities
         [MaxLength(50)]
         public string Name { get; set; }
 
-        public ICollection<Items> ItemsInCategory { get; set; }
+        public ICollection<Products> ItemsInCategory { get; set; }
 
         //public Category(string name)
         //{

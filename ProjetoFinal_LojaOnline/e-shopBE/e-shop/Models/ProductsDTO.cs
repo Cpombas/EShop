@@ -3,9 +3,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace e_shop.Models
 {
-    public class ListItemsDTO
+    public class ListProductsDTO
     {
-        public int ItemId { get; set; }
+        public int ProductId { get; set; }
 
         public string Name { get; set; }
 
@@ -17,10 +17,10 @@ namespace e_shop.Models
 
         public int CategoryId { get; set; }
 
-        public ListItemsDTO() { }
-        public ListItemsDTO(Items items)
+        public ListProductsDTO() { }
+        public ListProductsDTO(Products items)
         {
-            ItemId = items.ItemId;
+            ProductId = items.ProductId;
             Name = items.Name;
             Price = items.Price;
             Brand = items.Brand;
@@ -29,7 +29,7 @@ namespace e_shop.Models
         }
     }
 
-    public class CreateItemDTO
+    public class CreateProductDTO
     {
         [Required]
         public string? Name { get; set; }
@@ -44,9 +44,9 @@ namespace e_shop.Models
         public int CategoryId { get; set; }
     }
 
-    public class UpdateItemDTO 
+    public class UpdateProductDTO 
     {
-        public int ItemId { get; set; }
+        public int ProductId { get; set; }
 
         [Required]
         public string? Name { get; set; }
