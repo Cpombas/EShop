@@ -7,6 +7,8 @@ import { ProductDetailComponent } from './products/product-detail.component';
 import { ProductListComponent } from './products/product-list.component'
 import { CategoryComponent } from './category/category.component';
 import { LoginComponent } from './login/login.component';
+import { ProfileComponent } from './profile/profile.component';
+import { UserComponent } from './user/user.component';
 //import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const routes: Routes = [
@@ -15,7 +17,9 @@ const routes: Routes = [
   { path: 'product-details', component: ProductDetailComponent },
   { path: 'category', component: CategoryComponent},
   { path: 'cart', component: CartComponent },
-  { path: 'orders', component: OrderComponent },
+  { path: 'order', component: OrderComponent },
+  { path: 'profile', component: ProfileComponent },
+  { path: 'user', component: UserComponent },
   { path: 'login', component: LoginComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   //{ path: '**', component: PageNotFoundComponent },
