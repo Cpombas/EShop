@@ -14,6 +14,13 @@ import { CategoryComponent } from './category/category.component';
 import { UserComponent } from './user/user.component';
 import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
+import { PaymentComponent } from './payment/payment.component';
+import { ProductListServiceComponent } from './services/product-list-service/product-list-service.component';
+import { ProductDetailsServiceComponent } from './services/product-details-service/product-details-service.component';
+import { CategoryServiceComponent } from './services/category-service/category-service.component';
+import { OrderServiceComponent } from './services/order-service/order-service.component';
+import { UserServiceComponent } from './services/user-service/user-service.component';
+import { PaymentDetailsServiceComponent } from './services/payment-details-service/payment-details-service.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +33,14 @@ import { ProfileComponent } from './profile/profile.component';
     CategoryComponent,
     UserComponent,
     LoginComponent,
-    ProfileComponent
+    ProfileComponent,
+    PaymentComponent,
+    ProductListServiceComponent,
+    ProductDetailsServiceComponent,
+    CategoryServiceComponent,
+    OrderServiceComponent,
+    UserServiceComponent,
+    PaymentDetailsServiceComponent
   ],
   imports: [
     BrowserModule,
