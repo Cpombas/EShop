@@ -22,32 +22,32 @@ namespace e_shop.Models
 
         public ListCategoryDTO() { }
 
-        public ListCategoryDTO(Category category) 
-        { 
+        public ListCategoryDTO(Category category)
+        {
             CategoryId = category.CategoryId;
             Name = category.Name;
         }
+    }
 
-        public class CreateCategoryDTO
-        {
-            [Required]
-            public string? Name { get; set; }
+    public class CreateCategoryDTO
+    {
+        [Required]
+        public string? Name { get; set; }
 
-            //public ICollection<ListItemsDTO> ItemsInCategory { get; set; }
-            //= new List<ListItemsDTO>();
-        }
+        //public ICollection<ListItemsDTO> ItemsInCategory { get; set; }
+        //= new List<ListItemsDTO>();
+    }
 
-        public class UpdateCategoryDTO 
-        { 
-            public int CategoryId { get; set; }
+    public class UpdateCategoryDTO
+    {
+        public int CategoryId { get; set; }
 
-            [Required]
-            public string? Name { get; set; }
+        [Required]
+        public string? Name { get; set; }
 
-            //public ICollection<ListItemsDTO> ItemsInCategory { get; set; }
-            //= new List<ListItemsDTO>();
+        //public ICollection<ListItemsDTO> ItemsInCategory { get; set; }
+        //= new List<ListItemsDTO>();
 
-        }
     }
 
 }
