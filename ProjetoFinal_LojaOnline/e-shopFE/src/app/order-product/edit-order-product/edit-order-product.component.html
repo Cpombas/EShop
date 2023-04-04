@@ -1,6 +1,10 @@
 <div *ngIf="orderprod">
     
-    <h2>{{ orderprod.orderId }}</h2>
+    <h2>{{ orderprod.orderProductId }}</h2>
+    <div class="justify-content-center">
+        OrderProductId:
+        <input [(ngModel)]="orderprod.orderProductId" placeholder="OrderProductId">
+    </div>
     <div class="justify-content-center">
         OrderId:
         <input [(ngModel)]="orderprod.orderId" placeholder="OrderId">
