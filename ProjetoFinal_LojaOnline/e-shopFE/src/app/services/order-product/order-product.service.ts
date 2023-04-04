@@ -9,7 +9,7 @@ import { OrderProduct } from 'src/app/models/models';
 
 export class OrderProductService {
 
-  private baseUrl = "https://localhost:7004/api/Orders/Ordered Items"
+  private baseUrl = "https://localhost:7004/api/Orders/OrderedProducts"
 
   constructor(private httpClient: HttpClient) { }
 
@@ -22,10 +22,10 @@ export class OrderProductService {
   }
 
   public updateOrderProduct(orderprod: OrderProduct) :  Observable<OrderProduct[]> {
-    return this.httpClient.put<OrderProduct[]>(`${this.baseUrl}/id?id=${orderprod.orderId}`, orderprod);
+    return this.httpClient.put<OrderProduct[]>(`${this.baseUrl}ByOrderId?id=${orderprod.orderId}`, orderprod);
   }
 
   public deleteOrderProduct(orderprod: OrderProduct) :  Observable<OrderProduct[]> {
-    return this.httpClient.delete<OrderProduct[]>(`${this.baseUrl}/id?id=${orderprod.orderId}`);
+    return this.httpClient.delete<OrderProduct[]>(`${this.baseUrl}ByOrderId?id=${orderprod.orderId}`);
   }
 }

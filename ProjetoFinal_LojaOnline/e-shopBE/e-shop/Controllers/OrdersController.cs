@@ -78,7 +78,7 @@ namespace e_shop.Controllers
             return order == null ? NotFound() : Ok(new ListOrderProductsDTO(order));
         }
 
-        [HttpPost("ActiveOrder")]
+        [HttpPost("ActiveOrders")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> CreateActiveOrder(CreateOrdersDTO order)
@@ -121,7 +121,7 @@ namespace e_shop.Controllers
             return CreatedAtAction(nameof(GetOrderedProductsByOrderId), order);
         }
 
-        [HttpPut("ActiveOrderByOrderId")]
+        [HttpPut("ActiveOrdersByOrderId")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
 

@@ -8,7 +8,7 @@ import { Order } from 'src/app/models/models';
 })
 export class OrderService {
 
-  private baseUrl = "https://localhost:7004/api/Orders/Active Orders"
+  private baseUrl = "https://localhost:7004/api/Orders/ActiveOrders"
 
   constructor(private httpClient: HttpClient) { }
 
@@ -21,10 +21,10 @@ export class OrderService {
   }
 
   public updateOrder(order: Order) :  Observable<Order[]> {
-    return this.httpClient.put<Order[]>(`${this.baseUrl}/id?id=${order.orderId}`, order);
+    return this.httpClient.put<Order[]>(`${this.baseUrl}ByOrderId?id=${order.orderId}`, order);
   }
 
   public deleteOrder(order: Order) :  Observable<Order[]> {
-    return this.httpClient.delete<Order[]>(`${this.baseUrl}/id?id=${order.orderId}`);
+    return this.httpClient.delete<Order[]>(`${this.baseUrl}ByOrderId?id=${order.orderId}`);
   }
 }
