@@ -1,34 +1,29 @@
 import { Injectable } from '@angular/core';
-import { Category } from './category.model';
+import { Category } from 'src/app/models/models';
 import { HttpClient } from "@angular/common/http"
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CategoryService {
+  private baseUrl = "https://localhost:7004/api/Category"
 
-  constructor(private http:HttpClient) { }
-  
-  readonly baseUrl = "https://localhost:7004/api/Category"
-  formData:Category = new Category();
-  list: Category[];
-  
+  constructor(private httpClient: HttpClient) { }
 
-  postCategory(){
-    return this.http.post(this.baseUrl, this.formData);
+  public getCategoryList(): Observable<Category[]> {
+    return this.httpClient.get<Category[]>(`${this.baseUrl}`);
   }
 
-  putCategory(){
-    return this.http.put(`${this.baseUrl}/${this.formData.categoryId}`, this.formData);
+  public createCategory(category: Category) :  Observable<Category[]> {
+    return this.httpClient.post<Category[]>(`${this.baseUrl}`, category);
   }
 
-  deleteCategory(id:number){
-    return this.http.delete(`${this.baseUrl}/${id}`);
+  public updateCategory(category: Category) :  Observable<Category[]> {
+    return this.httpClient.put<Category[]>(`${this.baseUrl}/id?id=${category.categoryId}`, category);
   }
 
-  refreshlist(){
-    this.http.get(this.baseUrl)
-    .toPromise()
-    .then(res => this.list = res as Category[])
+  public deleteCategory(category: Category) :  Observable<Category[]> {
+    return this.httpClient.delete<Category[]>(`${this.baseUrl}/id?id=${category.categoryId}`);
   }
 }

@@ -17,6 +17,8 @@ namespace e_shop.Models
 
         public int CategoryId { get; set; }
 
+        public string? ImageName { get; set; }
+
         public ListProductsDTO() { }
         public ListProductsDTO(Products items)
         {
@@ -26,6 +28,7 @@ namespace e_shop.Models
             Brand = items.Brand;
             Description = items.Description;
             CategoryId = items.CategoryId;
+            ImageName = items.ImageName;
         }
     }
 
@@ -42,6 +45,8 @@ namespace e_shop.Models
 
         [Required]
         public int CategoryId { get; set; }
+
+        public string? ImageName { get; set; }
     }
 
     public class UpdateProductDTO 
@@ -58,5 +63,7 @@ namespace e_shop.Models
         public string? Description { get; set; }
 
         public int CategoryId { get; set; }
+
+        public string? ImageName { get; set; }
     }
 }

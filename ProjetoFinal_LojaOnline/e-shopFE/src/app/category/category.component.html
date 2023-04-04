@@ -18,7 +18,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" routerLink="/profile">Profile</a>
-                  </li>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" routerLink="/user">Users</a>
                 </li>
@@ -70,25 +70,39 @@
     <div class="container d-lg-flex  ps-lg-4 justify-content-center">
         <div class="row mb-lg-5 mt-lg-5 fw-bold ">
             <div class="col-md-12 text-wrap text-center ">
-                <a class="btn btn-primary btn-block " href="#">Add Category<i class="ci-arrow-right"></i></a>
+                <button class="btn btn-primary btn-block " (click)="toggleCollapse()">Manage Category<i class="ci-arrow-right"></i></button>
+                <div *ngIf="visible" class="mt-3">
+                    <button class="btn btn-primary btn-block " (click)="initNewCategory()">Create New Category</button>
+                        <table>
+                            <thead>
+                                <th class="text-white">Category Name</th>
+                                <th></th>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let category of categories">
+                                    <td class="text-white">{{ category.name }}</td>
+                                    <td><button class="btn btn-primary btn-block " (click)="editCategory(category)">Edit</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <app-edit-category [category]="categoryToEdit" (categoryUpdated)="updateCategoryList($event)">
+                        </app-edit-category>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
 <div class="container mt-5">
-    <h3>Category List</h3>
-    <div class="card-group row">
-        <div class="card col-sm-4"> <!--Use a for each to display categories, 3 for each row-->
+    <h3 class="align-center">Categories</h3>
+    <div class="card-group row" *ngFor="let category of categories">
+        <div class="card mb-3">
+            <h5 class="card-title m-2">{{category.name}}</h5>
             <img src="/images/pexels-cottonbro-studio-6153738.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Category 1</h5>
-                <p class="card-text">This is just an example of a short description.</p>
-                <div class="d-flex flex-row justify-content-center mt-auto">
-                    <button class="btn btn-primary mx-1" type="button">Show products in this category</button>
-                    <button class="btn btn-info mx-1" type="button">Update Info</button>
-                    <button class="btn mx-1" style="background-color: rgb(192, 236, 250)" type="button">Delete Category</button>
-                </div>
+            <p class="card-text">This is just an example of a short description.</p>
+            <div class="d-flex flex-row justify-content-center mt-auto">
+                <button class="btn btn-primary mx-1 mb-2" type="button">Show products in this category</button>
             </div>
         </div>
     </div>

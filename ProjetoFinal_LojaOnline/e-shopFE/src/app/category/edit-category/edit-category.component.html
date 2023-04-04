@@ -1,0 +1,10 @@
+<div *ngIf="category">
+    <h2>{{ category.name }}</h2>
+    <div>
+        Name:
+        <input [(ngModel)]="category.name" placeholder="Name">
+    </div>
+    <button class="btn btn-primary btn-block " (click)="updateCategory(category)" *ngIf="category.categoryId">Save</button>
+    <button class="btn btn-primary btn-block " (click)="deleteCategory(category)" *ngIf="category.categoryId">Delete</button>
+    <button  class="btn btn-primary btn-block "(click)="createCategory(category)" *ngIf="!category.categoryId">Create Category</button>
+</div>

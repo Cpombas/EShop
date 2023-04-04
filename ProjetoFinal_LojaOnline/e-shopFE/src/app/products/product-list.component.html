@@ -70,51 +70,51 @@
     <div class="container d-lg-flex  ps-lg-4 justify-content-center">
         <div class="row mb-lg-5 mt-lg-5 fw-bold ">
             <div class="col-md-12 text-wrap text-center ">
-                <a class="btn btn-primary btn-block " href="#">Add Product<i class="ci-arrow-right"></i></a>
+                <button class="btn btn-primary btn-block " (click)="toggleCollapse()">Manage Products<i class="ci-arrow-right"></i></button>
+                <div *ngIf="visible" class="mt-3">
+                    <button class="btn btn-primary btn-block " (click)="initNewProduct()">Create New Category</button>
+                        <table>
+                            <thead>
+                                <th class="text-white">Product Name</th>
+                                <th class="text-white">Price</th>
+                                <th class="text-white">Brand</th>
+                                <th class="text-white">Description</th>
+                                <th class="text-white">Category Id</th>
+                                <th class="text-white">Image Name</th>
+                                <th></th>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let product of products">
+                                    <td class="text-white mx-1">{{ product.name }}</td>
+                                    <td class="text-white mx-1">{{ product.price }}</td>
+                                    <td class="text-white mx-1">{{ product.brand }}</td>
+                                    <td class="text-white mx-1">{{ product.description }}</td>
+                                    <td class="text-white mx-1">{{ product.categoryId }}</td>
+                                    <td class="text-white mx-1">{{ product.imageName }}</td>
+                                    <td><button class="btn btn-primary btn-block " (click)="editProduct(product)">Edit</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <app-edit-products [product]="productToEdit" (productUpdated)="updateProductList($event)">
+                        </app-edit-products>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
 <div class="container mt-5">
-    <h3>Product List</h3>
+    <h3 class="align-center">Products</h3>
     <div class="card-group row">
-        <div class="card col-sm-4"> <!--Use a for each to display products, 3 for each row-->
+        <div class="card mb-3 col-sm-4" *ngFor="let product of products"> <!--Use a for each to display products, 3 for each row-->
+            <h5 class="card-title m-2">{{product.name}}</h5>
             <img src="/images/pexels-cottonbro-studio-6153738.jpg" class="card-img-top" alt="...">
             <div class="card-body">
-                <h5 class="card-title">Item 1</h5>
-                <p class="card-text">This is just an example of a short description.</p>
+                <p class="card-text">{{product.description}}</p>
                 <div class="d-flex flex-row justify-content-center mt-auto">
                     <button class="btn btn-primary mx-1" type="button" routerLink="/product-details">Product Details</button>
                     <button class="btn btn-primary mx-1" type="button">Add to cart</button>
-                    <button class="btn btn-info mx-1" type="button">Update Info</button>
-                    <button class="btn mx-1" style="background-color: rgb(192, 236, 250)" type="button">Delete Product</button>
-                </div>
-            </div>
-        </div>
-        <div class="card col-sm-4"> <!--Use a for each to display products, 3 for each row-->
-            <img src="/images/pexels-cottonbro-studio-6153738.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Item 1</h5>
-                <p class="card-text">This is just an example of a short description.</p>
-                <div class="d-flex flex-row justify-content-center mt-auto">
-                    <button class="btn btn-primary mx-1" type="button">Product Details</button>
-                    <button class="btn btn-primary mx-1" type="button">Add to cart</button>
-                    <button class="btn btn-info mx-1" type="button">Update Info</button>
-                    <button class="btn mx-1" style="background-color: rgb(192, 236, 250)" type="button">Delete Product</button>
-                </div>
-            </div>
-        </div>
-        <div class="card col-sm-4"> <!--Use a for each to display products, 3 for each row-->
-            <img src="/images/pexels-cottonbro-studio-6153738.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Item 1</h5>
-                <p class="card-text">This is just an example of a short description.</p>
-                <div class="d-flex flex-row justify-content-center mt-auto">
-                    <button class="btn btn-primary mx-1" type="button">Product Details</button>
-                    <button class="btn btn-primary mx-1" type="button">Add to cart</button>
-                    <button class="btn btn-info mx-1" type="button">Update Info</button>
-                    <button class="btn mx-1" style="background-color: rgb(192, 236, 250)" type="button">Delete Product</button>
                 </div>
             </div>
         </div>

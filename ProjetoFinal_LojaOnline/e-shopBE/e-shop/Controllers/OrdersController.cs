@@ -37,15 +37,6 @@ namespace e_shop.Controllers
             return orders;
         }
 
-        [HttpGet("Order History")]
-        public async Task<IEnumerable<ListOrderHistoryDTO>> GetOrderHistory()
-        {
-            var orders = await _context.OrdersHistory.
-                Select(o => new ListOrderHistoryDTO(o)).ToListAsync();
-
-            return orders;
-        }
-
         [HttpGet("Active orders by OrderId")]
 
         public async Task<IActionResult> GetActiveOrdersByOrderId(int id)
@@ -66,16 +57,6 @@ namespace e_shop.Controllers
             return order == null ? NotFound() : Ok(new ListOrderItemsDTO(order));
         }
 
-        [HttpGet("Order History by OrderId")]
-
-        public async Task<IActionResult> GetOrderHistoryByOrderId(int id)
-        {
-            var order = await _context.OrdersHistory.
-                FirstOrDefaultAsync(o => o.OrderId == id);
-
-            return order == null ? NotFound() : Ok(new ListOrderHistoryDTO(order));
-        }
-
         [HttpGet("Active orders by UserId")]
 
         public async Task<IActionResult> GetActiveOrdersByUserId(int id)
@@ -86,15 +67,6 @@ namespace e_shop.Controllers
             return order == null ? NotFound() : Ok(new ListOrdersDTO(order));
         }
 
-        //[HttpGet("Order History by UserId")]
-
-        //public async Task<IActionResult> GetOrderHistoryByUserId(int id)
-        //{
-        //    var order = await _context.OrdersHistory.
-        //        FirstOrDefaultAsync(o => o.UserId == id);
-
-        //    return order == null ? NotFound() : Ok(new ListOrderHistoryDTO(order));
-        //}
 
         [HttpGet("Ordered Items by ItemId")]
 
@@ -147,26 +119,6 @@ namespace e_shop.Controllers
             return CreatedAtAction(nameof(GetOrderedItemsByOrderId), order);
         }
 
-        [HttpPost("Order History")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> CreateOrdersHistory(CreateOrderHistoryDTO order)
-        {
-            if (!ModelState.IsValid) return BadRequest();
-
-            var newOrder = new OrderHistory
-            {
-                DateOfDelivery = order.DateOfDelivery,
-                TotalPrice = order.TotalPrice
-
-            };
-
-            await _context.OrdersHistory.AddAsync(newOrder);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction(nameof(GetOrderHistoryByOrderId), order);
-        }
-
         [HttpPut("Active Order by OrderId")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -214,28 +166,6 @@ namespace e_shop.Controllers
             return NoContent();
         }
 
-        [HttpPut("Order History by OrderId")]
-        [ProducesResponseType(StatusCodes.Status204NoContent)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-
-        public async Task<IActionResult> UpdateOrderHistory(int id, UpdateOrderHistoryDTO order)
-        {
-            if (id != order.OrderId) return BadRequest();
-
-            if (!ModelState.IsValid) return BadRequest();
-
-            var orderDB = _context.OrdersHistory.Find(id);
-
-            orderDB.DateOfDelivery = order.DateOfDelivery;
-            orderDB.TotalPrice = order.TotalPrice;
-
-            _context.Entry(orderDB).State = EntityState.Modified;
-
-            await _context.SaveChangesAsync();
-
-            return NoContent();
-        }
-
         [HttpDelete("Active Order by OrderId")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -269,29 +199,6 @@ namespace e_shop.Controllers
 
             return NoContent();
         }
-
-        [HttpDelete("OrderHistory by OrderId")]
-        [ProducesResponseType(StatusCodes.Status204NoContent)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-
-        public async Task<IActionResult> DeleteFromOrderHistory(int id)
-        {
-            var order = await _context.OrdersHistory.FindAsync(id);
-
-            if (order == null)
-                return NotFound();
-
-            _context.OrdersHistory.Remove(order);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
-        }
-
-
-
-
-
-
 
     }
 }

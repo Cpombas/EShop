@@ -48,7 +48,7 @@ namespace e_shop.Controllers
             return category == null ? NotFound() : Ok(new ListCategoryDTO(category));
         }
 
-        [HttpPost()]
+        [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> CreateCategory(CreateCategoryDTO category)
@@ -57,7 +57,8 @@ namespace e_shop.Controllers
 
             var newCategory = new Category
             {
-                Name = category.Name
+                Name = category.Name,
+                ImageName = category.ImageName
             };
 
             await _context.Category.AddAsync(newCategory);
@@ -79,6 +80,7 @@ namespace e_shop.Controllers
             var categoryDB = _context.Category.Find(id);
 
             categoryDB.Name = category.Name;
+            categoryDB.ImageName = category.ImageName;
 
             _context.Entry(categoryDB).State = EntityState.Modified;
 

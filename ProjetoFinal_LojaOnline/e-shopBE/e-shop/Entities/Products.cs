@@ -32,6 +32,7 @@ namespace e_shop.Entities
         //    Price = price;
         //}
 
+        public string ImageName { get; set; }
 
     }
 }

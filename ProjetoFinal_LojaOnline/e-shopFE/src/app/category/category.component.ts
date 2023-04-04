@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
-import { Category } from '../services/category/category.model';
+import { Category } from '../models/models';
 import { CategoryService } from '../services/category/category.service';
 
 @Component({
@@ -9,28 +10,30 @@ import { CategoryService } from '../services/category/category.service';
   styleUrls: ['./category.component.css']
 })
 export class CategoryComponent implements OnInit{
-  constructor(public service: CategoryService,
-    private toastr: ToastrService) {}
+  categories: Category[] = [];
+  categoryToEdit?: Category; 
+  visible = false;
+
+  constructor(private categoryService: CategoryService) {}
 
   ngOnInit(): void {
-    this.service.refreshlist();
+    this.categoryService.getCategoryList()
+    .subscribe((result: Category[]) => {this.categories = result});
   }
 
-  populateForm(selectedRecord: Category){
-    this.service.formData = Object.assign({}, selectedRecord);
+  updateCategoryList(categories: Category[]) {
+    this.categories = categories;
   }
 
-  onDelete(id:number){
-    if(confirm('Are you sure to delete this record?'))
-    {
-      this.service.deleteCategory(id)
-      .subscribe({
-        next: (res) => {
-          this.service.refreshlist();
-          this.toastr.error("Deleted successfully", 'Payment Detail Register')
-        },
-        error: (err) => {console.log(err)}
-      })
-    }
+  initNewCategory() {
+    this.categoryToEdit = new Category();
+  }
+
+  editCategory(category: Category){
+    this.categoryToEdit = category;
+  }
+
+  toggleCollapse(): void {
+    this.visible = !this.visible;
   }
 }

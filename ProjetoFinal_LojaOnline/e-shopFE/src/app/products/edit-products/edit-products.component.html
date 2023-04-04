@@ -1,0 +1,38 @@
+<div *ngIf="product">
+    
+    <h2>{{ product.name }}</h2>
+    <div class="justify-content-center">
+        Name:
+        <input [(ngModel)]="product.name" placeholder="Name">
+    </div>
+
+    <div class="justify-content-center">
+        Price:
+        <input [(ngModel)]="product.price" placeholder="Price">
+    </div>
+
+    <div>
+        Brand:
+        <input [(ngModel)]="product.brand" placeholder="Brand">
+    </div>
+
+    <div>
+        Description:
+        <textarea [(ngModel)]="product.description" placeholder="Description"></textarea>
+    </div>
+
+    <div>
+        CategoryId:
+        <input [(ngModel)]="product.categoryId" placeholder="CategoryId">
+    </div>
+
+    <div>
+        ImageName:
+        <input [(ngModel)]="product.imageName" placeholder="ImageName">
+    </div>
+
+    <button class="btn btn-primary btn-block " (click)="updateProduct(product)" *ngIf="product.productId">Save</button>
+    <button class="btn btn-primary btn-block " (click)="deleteProduct(product)" *ngIf="product.productId">Delete</button>
+    <button  class="btn btn-primary btn-block "(click)="createProduct(product)" *ngIf="!product.productId">Create Product</button>
+
+</div>

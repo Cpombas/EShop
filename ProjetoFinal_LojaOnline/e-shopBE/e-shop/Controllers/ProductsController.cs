@@ -61,7 +61,8 @@ namespace e_shop.Controllers
                 Price = product.Price,
                 Brand = product.Brand,
                 Description = product.Description,
-                CategoryId = product.CategoryId
+                CategoryId = product.CategoryId,
+                ImageName = product.ImageName
             };
 
             await _context.Products.AddAsync(newProduct);
@@ -87,6 +88,7 @@ namespace e_shop.Controllers
             productDB.Brand = product.Brand;
             productDB.Description = product.Description;
             productDB.CategoryId = product.CategoryId;
+            productDB.ImageName = product.ImageName;
 
             _context.Entry(productDB).State = EntityState.Modified;
 

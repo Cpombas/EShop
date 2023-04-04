@@ -9,6 +9,8 @@ namespace e_shop.Models
 
         public string Name { get; set; }
 
+        public string ImageName { get; set; }
+
         //public ICollection<ListItemsDTO> ItemsInCategory { get; set; }
         //    = new List<ListItemsDTO>();
 
@@ -26,6 +28,7 @@ namespace e_shop.Models
         {
             CategoryId = category.CategoryId;
             Name = category.Name;
+            ImageName = category.ImageName;
         }
     }
 
@@ -36,6 +39,8 @@ namespace e_shop.Models
 
         //public ICollection<ListItemsDTO> ItemsInCategory { get; set; }
         //= new List<ListItemsDTO>();
+
+        public string? ImageName { get; set; }
     }
 
     public class UpdateCategoryDTO
@@ -47,6 +52,8 @@ namespace e_shop.Models
 
         //public ICollection<ListItemsDTO> ItemsInCategory { get; set; }
         //= new List<ListItemsDTO>();
+
+        public string? ImageName { get; set;}
 
     }
 

@@ -70,6 +70,8 @@ namespace e_shop.Models
 
     public class UpdatePaymentDetailDTO
     {
+        public int PaymentId { get; set; }
+
         public string? CardOwnerName { get; set; }
 
         public string? Email { get; set; }

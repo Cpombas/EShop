@@ -21,6 +21,7 @@ namespace e_shop.Entities
         //    Name = name;
         //}
 
+        public string ImageName { get; set; }
 
     }
 }
