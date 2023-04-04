@@ -42,11 +42,38 @@
     <div class="container d-lg-flex  ps-lg-4 justify-content-center">
         <div class="row mb-lg-5 mt-lg-5 fw-bold ">
             <div class="col-md-12 text-wrap text-center ">
-                <a class="btn btn-primary btn-block " href="#">Add User<i class="ci-arrow-right"></i></a>
+                <button class="btn btn-primary btn-block " (click)="toggleCollapse()">Manage Users<i class="ci-arrow-right"></i></button>
+                <div *ngIf="visible" class="mt-3">
+                    <button class="btn btn-primary btn-block " (click)="initNewUser()">Create New User</button>
+                        <table>
+                            <thead>
+                                <th class="text-white">UserName</th>
+                                <th class="text-white">First Name</th>
+                                <th class="text-white">Last Name</th>
+                                <th class="text-white">Age</th>
+                                <th class="text-white">Email</th>
+                                <th class="text-white">Address</th>
+                                <th class="text-white">RoleId</th>
+                                <th></th>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let user of users">
+                                    <td class="text-white mx-1">{{ user.userName }}</td>
+                                    <td class="text-white mx-1">{{ user.firstName }}</td>
+                                    <td class="text-white mx-1">{{ user.lastName }}</td>
+                                    <td class="text-white mx-1">{{ user.age }}</td>
+                                    <td class="text-white mx-1">{{ user.email }}</td>
+                                    <td class="text-white mx-1">{{ user.address }}</td>
+                                    <td class="text-white mx-1">{{ user.roleId }}</td>
+                                    <td><button class="btn btn-primary btn-block " (click)="editUser(user)">Edit</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <app-edit-user [user]="userToEdit" (userUpdated)="updateUserList($event)">
+                        </app-edit-user>
+                </div>
             </div>
         </div>
     </div>
-</div>
-
-<div class="container">
 </div>

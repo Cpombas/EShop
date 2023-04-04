@@ -16,7 +16,7 @@ export class Product {
 
 export class User {
     userId?: number;
-    UserName: string = '';
+    userName: string = '';
     password: string = ''
     firstName: string = '';
     lastName: string = '';

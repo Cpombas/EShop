@@ -7,6 +7,8 @@ namespace e_shop.Models
     {
         public int OrderId { get; set; }
 
+        public int UserId { get; set; }
+
         public DateTime DateOfOrder { get; set; }
 
         public DateTime DateOfDelivery { get; set; }
@@ -20,6 +22,7 @@ namespace e_shop.Models
         public ListOrdersDTO(Orders orders)
         {
             OrderId = orders.OrderId;
+            UserId = orders.UserId;
             DateOfOrder = orders.DateOfOrder;
             DateOfDelivery = orders.DateOfDelivery;
             TotalPrice = orders.TotalPrice;
@@ -30,6 +33,8 @@ namespace e_shop.Models
     }
     public class CreateOrdersDTO
     {
+        public int UserId { get; set; }
+
         public DateTime DateOfOrder { get; set; }
 
         public DateTime DateOfDelivery { get; set;}
@@ -42,6 +47,8 @@ namespace e_shop.Models
     public class UpdateOrdersDTO 
     { 
         public int OrderId { get; set; }
+
+        public int UserId { get; set; }
 
         public DateTime DateOfOrder { get; set;}
 

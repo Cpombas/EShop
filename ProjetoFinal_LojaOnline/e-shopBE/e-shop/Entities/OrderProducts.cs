@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace e_shop.Entities
 {
-    public class OrderItems
+    public class OrderProducts
     {
         [ForeignKey("OrderId")]
         public Orders? Order { get; set; }
@@ -11,10 +11,10 @@ namespace e_shop.Entities
         [Key]
         public int OrderId { get; set; }
 
-        [ForeignKey("ItemId")]
-        public Products? Item { get; set; }
+        [ForeignKey("ProductId")]
+        public Products? Product { get; set; }
 
-        public int ItemId { get; set; }
+        public int ProductId { get; set; }
 
         public int Quantity { get; set; }
 

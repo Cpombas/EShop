@@ -15,7 +15,7 @@ namespace e_shop.DbContexts
 
         public DbSet<Orders> Orders { get; set; } = null!;
 
-        public DbSet<OrderItems> OrderItems { get; set; } = null!;
+        public DbSet<OrderProducts> OrderProducts { get; set; } = null!;
 
         public DbSet<PaymentDetail> PaymentDetails { get; set; } = null!;
 

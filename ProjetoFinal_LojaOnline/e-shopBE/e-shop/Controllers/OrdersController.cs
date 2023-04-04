@@ -29,10 +29,10 @@ namespace e_shop.Controllers
         }
 
         [HttpGet("Ordered Items")]
-        public async Task<IEnumerable<ListOrderItemsDTO>> GetOrderedItems()
+        public async Task<IEnumerable<ListOrderProductsDTO>> GetOrderedItems()
         {
-            var orders = await _context.OrderItems.
-                Select(o => new ListOrderItemsDTO(o)).ToListAsync();
+            var orders = await _context.OrderProducts.
+                Select(o => new ListOrderProductsDTO(o)).ToListAsync();
 
             return orders;
         }
@@ -51,10 +51,10 @@ namespace e_shop.Controllers
 
         public async Task<IActionResult> GetOrderedItemsByOrderId(int id)
         {
-            var order = await _context.OrderItems.
+            var order = await _context.OrderProducts.
                 FirstOrDefaultAsync(o => o.OrderId == id);
 
-            return order == null ? NotFound() : Ok(new ListOrderItemsDTO(order));
+            return order == null ? NotFound() : Ok(new ListOrderProductsDTO(order));
         }
 
         [HttpGet("Active orders by UserId")]
@@ -72,10 +72,10 @@ namespace e_shop.Controllers
 
         public async Task<IActionResult> GetOrderedItemsByUserId(int id)
         {
-            var order = await _context.OrderItems.
-                FirstOrDefaultAsync(o => o.ItemId == id);
+            var order = await _context.OrderProducts.
+                FirstOrDefaultAsync(o => o.ProductId == id);
 
-            return order == null ? NotFound() : Ok(new ListOrderItemsDTO(order));
+            return order == null ? NotFound() : Ok(new ListOrderProductsDTO(order));
         }
 
         [HttpPost("Active Order")]
@@ -87,6 +87,7 @@ namespace e_shop.Controllers
 
             var newOrder = new Orders
             {
+                UserId = order.UserId,
                 DateOfOrder = order.DateOfOrder,
                 DateOfDelivery = order.DateOfDelivery,
                 TotalPrice = order.TotalPrice,
@@ -102,18 +103,19 @@ namespace e_shop.Controllers
         [HttpPost("Ordered Item")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> CreateOrderedItem(CreateOrderItemsDTO order)
+        public async Task<IActionResult> CreateOrderedItem(CreateOrderProductsDTO order)
         {
             if (!ModelState.IsValid) return BadRequest();
 
-            var newOrder = new OrderItems
+            var newOrder = new OrderProducts
             {
-                ItemId = order.ItemId,
+                OrderId = order.OrderId,
+                ProductId = order.ProductId,
                 Quantity = order.Quantity,
                 Price = order.Price
             };
 
-            await _context.OrderItems.AddAsync(newOrder);
+            await _context.OrderProducts.AddAsync(newOrder);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction(nameof(GetOrderedItemsByOrderId), order);
@@ -131,6 +133,7 @@ namespace e_shop.Controllers
 
             var orderDB = _context.Orders.Find(id);
 
+            orderDB.UserId = order.UserId;
             orderDB.DateOfOrder = order.DateOfOrder;
             orderDB.DateOfDelivery = order.DateOfDelivery;
             orderDB.TotalPrice = order.TotalPrice;
@@ -147,15 +150,16 @@ namespace e_shop.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
 
-        public async Task<IActionResult> UpdateOrderedItems(int id, UpdateOrderItemsDTO order)
+        public async Task<IActionResult> UpdateOrderedItems(int id, UpdateOrderProductsDTO order)
         {
             if (id != order.OrderId) return BadRequest();
 
             if (!ModelState.IsValid) return BadRequest();
 
-            var orderDB = _context.OrderItems.Find(id);
+            var orderDB = _context.OrderProducts.Find(id);
 
-            orderDB.ItemId = order.ItemId;
+            orderDB.OrderId = order.OrderId;
+            orderDB.ProductId = order.ProductId;
             orderDB.Quantity = order.Quantity;
             orderDB.Price = order.Price;
 
@@ -189,12 +193,12 @@ namespace e_shop.Controllers
 
         public async Task<IActionResult> DeleteFormOrderItems(int id)
         {
-            var order = await _context.OrderItems.FindAsync(id);
+            var order = await _context.OrderProducts.FindAsync(id);
 
             if (order == null)
                 return NotFound();
 
-            _context.OrderItems.Remove(order);
+            _context.OrderProducts.Remove(order);
             await _context.SaveChangesAsync();
 
             return NoContent();

@@ -1,1 +1,48 @@
-<p>edit-user works!</p>
+<div *ngIf="user">
+    
+    <h2>{{ user.userName }}</h2>
+    <div class="justify-content-center">
+        UserName:
+        <input [(ngModel)]="user.userName" placeholder="UserName">
+    </div>
+
+    <div class="justify-content-center">
+        Password:
+        <input [(ngModel)]="user.password" placeholder="Password">
+    </div>
+
+    <div class="justify-content-center">
+        FirstName:
+        <input [(ngModel)]="user.firstName" placeholder="FirstName">
+    </div>
+
+    <div>
+        LastName:
+        <input [(ngModel)]="user.lastName" placeholder="LastName">
+    </div>
+
+    <div>
+        Age:
+        <input [(ngModel)]="user.age" placeholder="Age">
+    </div>
+
+    <div>
+        Email:
+        <input [(ngModel)]="user.email" placeholder="Email">
+    </div>
+
+    <div>
+        Address:
+        <textarea [(ngModel)]="user.address" placeholder="Address"></textarea>
+    </div>
+
+    <div>
+        RoleId:
+        <input [(ngModel)]="user.roleId" placeholder="RoleId">
+    </div>
+
+    <button class="btn btn-primary btn-block " (click)="updateUser(user)" *ngIf="user.userId">Save</button>
+    <button class="btn btn-primary btn-block " (click)="deleteUser(user)" *ngIf="user.userId">Delete</button>
+    <button  class="btn btn-primary btn-block "(click)="createUser(user)" *ngIf="!user.userId">Create User</button>
+
+</div>
