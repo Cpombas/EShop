@@ -25,3 +25,20 @@ export class User {
     address: string = '';
     roleId: string = '';  
 }
+
+export class Order {
+    orderId?: number;
+    userId: number | undefined;
+    dateOfOrder: Date | undefined;
+    dateOfDelivery: Date | undefined;
+    totalPrice: number | undefined;
+    orderStatus: string = '';
+}
+
+export class OrderProduct {
+    orderProductId?: number;
+    orderId: number | undefined;
+    productId: number | undefined;
+    quantity: number | undefined;
+    price: number | undefined;
+}

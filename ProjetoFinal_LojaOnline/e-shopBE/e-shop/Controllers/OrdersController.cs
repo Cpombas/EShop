@@ -19,7 +19,7 @@ namespace e_shop.Controllers
             _context = context;
         }
 
-        [HttpGet ("Active Orders")]
+        [HttpGet ("ActiveOrders")]
         public async Task<IEnumerable<ListOrdersDTO>> GetActiveOrders()
         {
             var orders = await _context.Orders.
@@ -28,8 +28,8 @@ namespace e_shop.Controllers
             return orders;
         }
 
-        [HttpGet("Ordered Items")]
-        public async Task<IEnumerable<ListOrderProductsDTO>> GetOrderedItems()
+        [HttpGet("OrderedProducts")]
+        public async Task<IEnumerable<ListOrderProductsDTO>> GetOrderedProducts()
         {
             var orders = await _context.OrderProducts.
                 Select(o => new ListOrderProductsDTO(o)).ToListAsync();
@@ -37,7 +37,7 @@ namespace e_shop.Controllers
             return orders;
         }
 
-        [HttpGet("Active orders by OrderId")]
+        [HttpGet("ActiveOrdersByOrderId")]
 
         public async Task<IActionResult> GetActiveOrdersByOrderId(int id)
         {
@@ -47,9 +47,9 @@ namespace e_shop.Controllers
             return order == null ? NotFound() : Ok(new ListOrdersDTO(order));
         }
 
-        [HttpGet("Ordered Items by OrderId")]
+        [HttpGet("OrderedProductsByOrderId")]
 
-        public async Task<IActionResult> GetOrderedItemsByOrderId(int id)
+        public async Task<IActionResult> GetOrderedProductsByOrderId(int id)
         {
             var order = await _context.OrderProducts.
                 FirstOrDefaultAsync(o => o.OrderId == id);
@@ -57,7 +57,7 @@ namespace e_shop.Controllers
             return order == null ? NotFound() : Ok(new ListOrderProductsDTO(order));
         }
 
-        [HttpGet("Active orders by UserId")]
+        [HttpGet("ActiveOrdersByUserId")]
 
         public async Task<IActionResult> GetActiveOrdersByUserId(int id)
         {
@@ -68,9 +68,9 @@ namespace e_shop.Controllers
         }
 
 
-        [HttpGet("Ordered Items by ItemId")]
+        [HttpGet("OrderedProdutsByProductId")]
 
-        public async Task<IActionResult> GetOrderedItemsByUserId(int id)
+        public async Task<IActionResult> GetOrderedProdcutsByProductId(int id)
         {
             var order = await _context.OrderProducts.
                 FirstOrDefaultAsync(o => o.ProductId == id);
@@ -78,7 +78,7 @@ namespace e_shop.Controllers
             return order == null ? NotFound() : Ok(new ListOrderProductsDTO(order));
         }
 
-        [HttpPost("Active Order")]
+        [HttpPost("ActiveOrder")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> CreateActiveOrder(CreateOrdersDTO order)
@@ -100,10 +100,10 @@ namespace e_shop.Controllers
             return CreatedAtAction(nameof(GetActiveOrdersByOrderId), new { id = newOrder.OrderId }, order);
         }
 
-        [HttpPost("Ordered Item")]
+        [HttpPost("OrderedProduct")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> CreateOrderedItem(CreateOrderProductsDTO order)
+        public async Task<IActionResult> CreateOrderedProducts(CreateOrderProductsDTO order)
         {
             if (!ModelState.IsValid) return BadRequest();
 
@@ -118,10 +118,10 @@ namespace e_shop.Controllers
             await _context.OrderProducts.AddAsync(newOrder);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction(nameof(GetOrderedItemsByOrderId), order);
+            return CreatedAtAction(nameof(GetOrderedProductsByOrderId), order);
         }
 
-        [HttpPut("Active Order by OrderId")]
+        [HttpPut("ActiveOrderByOrderId")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
 
@@ -146,11 +146,11 @@ namespace e_shop.Controllers
             return NoContent();
         }
 
-        [HttpPut("Ordered Items by OrderId")]
+        [HttpPut("OrderedProductsByOrderId")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
 
-        public async Task<IActionResult> UpdateOrderedItems(int id, UpdateOrderProductsDTO order)
+        public async Task<IActionResult> UpdateOrderedProducts(int id, UpdateOrderProductsDTO order)
         {
             if (id != order.OrderId) return BadRequest();
 
@@ -170,7 +170,7 @@ namespace e_shop.Controllers
             return NoContent();
         }
 
-        [HttpDelete("Active Order by OrderId")]
+        [HttpDelete("ActiveOrderByOrderId")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
 
@@ -187,11 +187,11 @@ namespace e_shop.Controllers
             return NoContent();
         }
 
-        [HttpDelete("Ordered Item by OrderId")]
+        [HttpDelete("OrderedProductByOrderId")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
 
-        public async Task<IActionResult> DeleteFormOrderItems(int id)
+        public async Task<IActionResult> DeleteFromOrderedProducts(int id)
         {
             var order = await _context.OrderProducts.FindAsync(id);
 

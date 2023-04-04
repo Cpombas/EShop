@@ -1,0 +1,28 @@
+<div *ngIf="orderprod">
+    
+    <h2>{{ orderprod.orderId }}</h2>
+    <div class="justify-content-center">
+        OrderId:
+        <input [(ngModel)]="orderprod.orderId" placeholder="OrderId">
+    </div>
+
+    <div class="justify-content-center">
+        ProductId:
+        <input [(ngModel)]="orderprod.productId" placeholder="ProductId">
+    </div>
+
+    <div class="justify-content-center">
+        Quantity:
+        <input [(ngModel)]="orderprod.quantity" placeholder="Quantity">
+    </div>
+
+    <div>
+        Price:
+        <input [(ngModel)]="orderprod.price" placeholder="Price">
+    </div>
+
+    <button class="btn btn-primary btn-block " (click)="updateOrderProduct(orderprod)" *ngIf="orderprod.orderId">Save</button>
+    <button class="btn btn-primary btn-block " (click)="deleteOrderProduct(orderprod)" *ngIf="orderprod.orderId">Delete</button>
+    <button  class="btn btn-primary btn-block "(click)="createOrderProduct(orderprod)" *ngIf="!orderprod.orderId">Create Order</button>
+
+</div>

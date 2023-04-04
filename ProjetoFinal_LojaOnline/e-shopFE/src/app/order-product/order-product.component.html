@@ -1,0 +1,33 @@
+<div class="container-fluid" style="background-color: rgb(58, 175, 210);">
+    <div class="container d-lg-flex  ps-lg-4 justify-content-center">
+        <div class="row mb-lg-5 mt-lg-5 fw-bold ">
+            <div class="col-md-12 text-wrap text-center ">
+                <button class="btn btn-primary btn-block " (click)="toggleCollapse()">Manage Order Products<i class="ci-arrow-right"></i></button>
+                <div *ngIf="visible" class="mt-3">
+                    <button class="btn btn-primary btn-block " (click)="initNewOrder()">Create New Order Product</button>
+                        <table>
+                            <thead>
+                                <th class="text-white">OrderId</th>
+                                <th class="text-white">ProductId</th>
+                                <th class="text-white">Quantity</th>
+                                <th class="text-white">Price</th>
+                                <th></th>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let orderprod of orderprods">
+                                    <td class="text-white mx-1">{{ orderprod.orderId }}</td>
+                                    <td class="text-white mx-1">{{ orderprod.productId }}</td>
+                                    <td class="text-white mx-1">{{ orderprod.quantity }}</td>
+                                    <td class="text-white mx-1">{{ orderprod.price }}</td>
+                                    <td><button class="btn btn-primary btn-block " (click)="editOrderProduct(orderprod)">Edit</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <app-edit-order-product [orderprod]="orderProdToEdit" (orderProdUpdated)="updateOrderProductList($event)">
+                        </app-edit-order-product>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

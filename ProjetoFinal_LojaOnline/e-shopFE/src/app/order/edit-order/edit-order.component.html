@@ -1,1 +1,38 @@
-<p>edit-order works!</p>
+<div *ngIf="order">
+    
+    <h2>{{ order.orderId }}</h2>
+    <div class="justify-content-center">
+        OrderId:
+        <input [(ngModel)]="order.orderId" placeholder="OrderId">
+    </div>
+
+    <div class="justify-content-center">
+        UserId:
+        <input [(ngModel)]="order.userId" placeholder="UserId">
+    </div>
+
+    <div class="justify-content-center">
+        Date of Order:
+        <input [(ngModel)]="order.dateOfOrder" placeholder="DateOfOrder">
+    </div>
+
+    <div>
+        Date of Delivery:
+        <input [(ngModel)]="order.dateOfDelivery" placeholder="DateOfDelivery">
+    </div>
+
+    <div>
+        Total Price:
+        <input [(ngModel)]="order.totalPrice" placeholder="TotalPrice">
+    </div>
+
+    <div>
+        Order Status:
+        <input [(ngModel)]="order.orderStatus" placeholder="OrderStatus">
+    </div>
+
+    <button class="btn btn-primary btn-block " (click)="updateOrder(order)" *ngIf="order.orderId">Save</button>
+    <button class="btn btn-primary btn-block " (click)="deleteOrder(order)" *ngIf="order.orderId">Delete</button>
+    <button  class="btn btn-primary btn-block "(click)="createOrder(order)" *ngIf="!order.orderId">Create Order</button>
+
+</div>

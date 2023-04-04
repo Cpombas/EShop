@@ -22,8 +22,8 @@ import { EditCategoryComponent } from './category/edit-category/edit-category.co
 import { EditProductsComponent } from './products/edit-products/edit-products.component';
 import { EditUserComponent } from './user/edit-user/edit-user.component';
 import { EditOrderComponent } from './order/edit-order/edit-order.component';
-import { OrderitemsComponent } from './orderitems/orderitems.component';
-import { EditOrderItemsComponent } from './orderitems/edit-order-items/edit-order-items.component';
+import { OrderProductComponent } from './order-product/order-product.component';
+import { EditOrderProductComponent } from './order-product/edit-order-product/edit-order-product.component';
 
 @NgModule({
   declarations: [
@@ -44,8 +44,8 @@ import { EditOrderItemsComponent } from './orderitems/edit-order-items/edit-orde
     EditProductsComponent,
     EditUserComponent,
     EditOrderComponent,
-    OrderitemsComponent,
-    EditOrderItemsComponent,
+    OrderProductComponent,
+    EditOrderProductComponent,
   ],
   imports: [
     BrowserModule,
