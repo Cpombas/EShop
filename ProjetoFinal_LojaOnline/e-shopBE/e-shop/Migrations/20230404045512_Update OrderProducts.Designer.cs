@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using e_shop.DbContexts;
 
@@ -11,9 +12,10 @@ using e_shop.DbContexts;
 namespace e_shop.Migrations
 {
     [DbContext(typeof(EShopContext))]
-    partial class EShopContextModelSnapshot : ModelSnapshot
+    [Migration("20230404045512_Update OrderProducts")]
+    partial class UpdateOrderProducts
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -46,12 +48,6 @@ namespace e_shop.Migrations
 
             modelBuilder.Entity("e_shop.Entities.OrderProducts", b =>
                 {
-                    b.Property<int>("OrderProductId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("OrderProductId"), 1L, 1);
-
                     b.Property<int>("OrderId")
                         .HasColumnType("int");
 
@@ -63,8 +59,6 @@ namespace e_shop.Migrations
 
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
-
-                    b.HasKey("OrderProductId");
 
                     b.HasIndex("OrderId");
 

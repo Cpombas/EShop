@@ -5,6 +5,8 @@ namespace e_shop.Models
 {
     public class ListOrderProductsDTO
     {
+        public int OrderProductId { get; set; }
+
         public int OrderId { get; set; }
 
         public int ProductId { get; set; }
@@ -18,6 +20,7 @@ namespace e_shop.Models
 
         public ListOrderProductsDTO(OrderProducts orderItems)
         {
+            OrderProductId = orderItems.OrderProductId;
             OrderId = orderItems.OrderId;
             ProductId = orderItems.ProductId;
             Quantity= orderItems.Quantity;
