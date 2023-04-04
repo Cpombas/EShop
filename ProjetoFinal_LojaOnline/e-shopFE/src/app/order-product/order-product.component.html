@@ -15,6 +15,7 @@
                             </thead>
                             <tbody>
                                 <tr *ngFor="let orderprod of orderprods">
+                                    <td class="text-white mx-1">{{ orderprod.orderProductId }}</td>
                                     <td class="text-white mx-1">{{ orderprod.orderId }}</td>
                                     <td class="text-white mx-1">{{ orderprod.productId }}</td>
                                     <td class="text-white mx-1">{{ orderprod.quantity }}</td>

@@ -152,7 +152,7 @@ namespace e_shop.Controllers
 
         public async Task<IActionResult> UpdateOrderedProducts(int id, UpdateOrderProductsDTO order)
         {
-            if (id != order.OrderId) return BadRequest();
+            if (id != order.OrderProductId) return BadRequest();
 
             if (!ModelState.IsValid) return BadRequest();
 
@@ -187,7 +187,7 @@ namespace e_shop.Controllers
             return NoContent();
         }
 
-        [HttpDelete("OrderedProductByOrderId")]
+        [HttpDelete("OrderedProductsByOrderId")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
 

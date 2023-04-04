@@ -41,8 +41,8 @@ namespace e_shop.Models
 
     public class UpdateOrderProductsDTO
     {
+        public int OrderProductId { get; set; }
         public int OrderId { get; set; }
-
         public int ProductId { get; set; }
         public int Quantity { get; set; }
 

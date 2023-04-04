@@ -22,10 +22,10 @@ export class OrderProductService {
   }
 
   public updateOrderProduct(orderprod: OrderProduct) :  Observable<OrderProduct[]> {
-    return this.httpClient.put<OrderProduct[]>(`${this.baseUrl}ByOrderId?id=${orderprod.orderId}`, orderprod);
+    return this.httpClient.put<OrderProduct[]>(`${this.baseUrl}ByOrderId?id=${orderprod.orderProductId}`, orderprod);
   }
 
   public deleteOrderProduct(orderprod: OrderProduct) :  Observable<OrderProduct[]> {
-    return this.httpClient.delete<OrderProduct[]>(`${this.baseUrl}ByOrderId?id=${orderprod.orderId}`);
+    return this.httpClient.delete<OrderProduct[]>(`${this.baseUrl}ByOrderId?id=${orderprod.orderProductId}`);
   }
 }
