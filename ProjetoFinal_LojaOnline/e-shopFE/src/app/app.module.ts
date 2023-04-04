@@ -21,6 +21,9 @@ import { FormsModule } from '@angular/forms';
 import { EditCategoryComponent } from './category/edit-category/edit-category.component';
 import { EditProductsComponent } from './products/edit-products/edit-products.component';
 import { EditUserComponent } from './user/edit-user/edit-user.component';
+import { EditOrderComponent } from './order/edit-order/edit-order.component';
+import { OrderitemsComponent } from './orderitems/orderitems.component';
+import { EditOrderItemsComponent } from './orderitems/edit-order-items/edit-order-items.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +43,9 @@ import { EditUserComponent } from './user/edit-user/edit-user.component';
     EditCategoryComponent,
     EditProductsComponent,
     EditUserComponent,
+    EditOrderComponent,
+    OrderitemsComponent,
+    EditOrderItemsComponent,
   ],
   imports: [
     BrowserModule,
