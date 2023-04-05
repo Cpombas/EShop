@@ -42,8 +42,8 @@ namespace e_shop.Controllers
                 Age = request.Age,
                 Email = request.Email,
                 Address = request.Address,
-                Role = request.Role,
-                //user.Role = "Client";
+                //Role = request.Role,
+                Role = "Client"
             };
 
             await _context.User.AddAsync(newUser);
