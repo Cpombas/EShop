@@ -14,8 +14,9 @@ namespace e_shop.Entities
         [MaxLength(50)]
         public string UserName { get; set; }
 
-        [Required]
-        public string Password { get; set; }
+        public byte[] PasswordHash { get; set; }
+
+        public byte[] PasswordSalt { get; set; }
 
         [MaxLength(50)]
         public string? FirstName { get; set; }
@@ -31,11 +32,8 @@ namespace e_shop.Entities
         [MaxLength(100)]
         public string? Address { get; set; }
 
-        [ForeignKey("RoleId")]
-        public Roles? Role { get; set; }
-
         [Required]
-        public int RoleId { get; set; }
+        public string Role { get; set; }
 
         //public User (string userName, string password, int roleId)
         //{

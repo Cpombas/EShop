@@ -7,8 +7,6 @@ namespace e_shop.DbContexts
     {
         public DbSet<User> User { get; set; } = null!;
 
-        public DbSet<Roles> Roles { get; set; } = null!;
-
         public DbSet<Products> Products { get; set; } = null!;
 
         public DbSet<Category> Category { get; set; } = null!;

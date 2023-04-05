@@ -1,6 +1,7 @@
 ﻿using e_shop.DbContexts;
 using e_shop.Entities;
 using e_shop.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
@@ -8,6 +9,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Net;
+using System.Security.Cryptography;
 using static e_shop.Models.ListUserDTO;
 
 namespace e_shop.Controllers
@@ -26,7 +28,7 @@ namespace e_shop.Controllers
         [HttpGet]
         public async Task<IEnumerable<ListUserDTO>> GetUsers()
         {
-            var users = await _context.User.Include("Role").
+            var users = await _context.User.
                 Select(u => new ListUserDTO(u)).ToListAsync();
 
             return users;
@@ -35,7 +37,7 @@ namespace e_shop.Controllers
         [HttpGet("id")]
         public async Task<IActionResult> GetUserByID (int id)
         {
-            var user = await _context.User.Include("Role").
+            var user = await _context.User.
                 FirstOrDefaultAsync(u => u.UserId == id);
 
             return user == null ? NotFound() : Ok(new ListUserDTO(user));
@@ -57,16 +59,19 @@ namespace e_shop.Controllers
         {
             if (!ModelState.IsValid) return BadRequest();
 
+            CreatePasswordHash(user.Password, out byte[] passwordHash, out byte[] passwordSalt);
+
             var newUser = new User
             {
                 UserName = user.UserName,
-                Password = user.Password,
+                PasswordHash = passwordHash,
+                PasswordSalt = passwordSalt,
                 FirstName = user.FirstName,
                 LastName = user.LastName,
                 Age = user.Age,
                 Email = user.Email,
                 Address = user.Address,
-                RoleId = user.RoleId
+                Role = user.Role
             };
 
             await _context.User.AddAsync(newUser);
@@ -93,7 +98,7 @@ namespace e_shop.Controllers
             userDB.Age = user.Age;
             userDB.Email = user.Email;
             userDB.Address = user.Address;
-            userDB.RoleId = user.RoleId;
+            userDB.Role = user.Role;
 
             _context.Entry(userDB).State = EntityState.Modified;
 
@@ -125,7 +130,7 @@ namespace e_shop.Controllers
         //}
 
 
-        [HttpDelete("id")]
+        [HttpDelete("id"), Authorize(Roles = "Admin")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
 
@@ -140,6 +145,15 @@ namespace e_shop.Controllers
             await _context.SaveChangesAsync();
 
             return NoContent();
+        }
+
+        private void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)
+        {
+            using (var hmac = new HMACSHA512())
+            {
+                passwordSalt = hmac.Key;
+                passwordHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
+            }
         }
     }
 }
