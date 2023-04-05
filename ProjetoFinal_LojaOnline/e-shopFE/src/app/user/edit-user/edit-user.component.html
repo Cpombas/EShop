@@ -37,12 +37,12 @@
     </div>
 
     <div>
-        RoleId:
-        <input [(ngModel)]="user.roleId" placeholder="RoleId">
+        Role:
+        <input [(ngModel)]="user.role" placeholder="Role">
     </div>
 
     <button class="btn btn-primary btn-block " (click)="updateUser(user)" *ngIf="user.userId">Save</button>
-    <button class="btn btn-primary btn-block " (click)="deleteUser(user)" *ngIf="user.userId">Delete</button>
+    <button class="btn btn-primary btn-block " (click)="deleteUser(user)" *ngIf="user.userId ">Delete</button> <!--&& roleService.isAdmin()-->
     <button  class="btn btn-primary btn-block "(click)="createUser(user)" *ngIf="!user.userId">Create User</button>
 
 </div>

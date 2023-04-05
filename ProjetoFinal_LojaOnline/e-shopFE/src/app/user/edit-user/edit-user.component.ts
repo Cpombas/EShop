@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { User } from 'src/app/models/models';
 import { UserService } from 'src/app/services/user/user.service';
+import { RoleService } from 'src/app/services/role/role.service';
 
 @Component({
   selector: 'app-edit-user',

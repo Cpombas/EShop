@@ -23,7 +23,7 @@ export class User {
     age: number | undefined;
     email: string = '';
     address: string = '';
-    roleId: string = '';  
+    role: string = '';  
 }
 
 export class Order {
