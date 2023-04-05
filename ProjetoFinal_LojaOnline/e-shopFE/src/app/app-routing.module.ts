@@ -9,6 +9,7 @@ import { CategoryComponent } from './category/category.component';
 import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
 import { UserComponent } from './user/user.component';
+import { RegisterComponent } from './register/register.component';
 //import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const routes: Routes = [
@@ -21,6 +22,7 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent },
   { path: 'user', component: UserComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent},
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   //{ path: '**', component: PageNotFoundComponent },
 ];

@@ -3,6 +3,7 @@ using e_shop.Entities;
 using e_shop.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -16,11 +17,12 @@ namespace e_shop.Controllers
     [ApiController]
     public class AuthenticationController : ControllerBase
     {
-        public static User user = new User();
+        private readonly EShopContext _context;
         private readonly IConfiguration _configuration;
 
-        public AuthenticationController(IConfiguration configuration)
+        public AuthenticationController(IConfiguration configuration, EShopContext context)
         {
+            this._context = context;
             this._configuration = configuration;
         }
 
@@ -30,27 +32,35 @@ namespace e_shop.Controllers
         {
             CreatePasswordHash(request.Password, out byte[] passwordHash, out byte[] passwordSalt);
 
-            user.UserName = request.UserName;
-            user.PasswordHash = passwordHash;
-            user.PasswordSalt = passwordSalt;
-            user.Role = request.Role;
-            //user.Role = "Client";
+            var newUser = new User
+            {
+                UserName = request.UserName,
+                PasswordHash = passwordHash,
+                PasswordSalt = passwordSalt,
+                FirstName = request.FirstName,
+                LastName = request.LastName,
+                Age = request.Age,
+                Email = request.Email,
+                Address = request.Address,
+                Role = request.Role,
+                //user.Role = "Client";
+            };
 
+            await _context.User.AddAsync(newUser);
+            await _context.SaveChangesAsync();
 
-            return Ok(user);
+            return Ok(newUser);
         }
 
         [HttpPost("login")]
         public async Task<ActionResult<string>> Login(ListUserAuthDTO request)
         {
-            if (user.UserName != request.UserName)
-            {
-                return BadRequest("User not found");
-            }
+            var user = await _context.User. //Include("Role").
+                FirstOrDefaultAsync(u => u.UserName == request.UserName);
 
-            if (!VerifyPasswordHash(request.Password, user.PasswordHash, user.PasswordSalt))
+            if (user == null || !VerifyPasswordHash(request.Password, user.PasswordHash, user.PasswordSalt))
             {
-                return BadRequest("Wrong Password");
+                return BadRequest("Wrong Username or Password");
             }
 
             string token = CreateToken(user);

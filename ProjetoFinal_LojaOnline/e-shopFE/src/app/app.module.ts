@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,13 +18,13 @@ import { ProfileComponent } from './profile/profile.component';
 import { PaymentComponent } from './payment/payment.component';
 import { RegisterComponent } from './register/register.component';
 import { ProductComponent } from './product/product.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EditCategoryComponent } from './category/edit-category/edit-category.component';
 import { EditProductsComponent } from './products/edit-products/edit-products.component';
 import { EditUserComponent } from './user/edit-user/edit-user.component';
 import { EditOrderComponent } from './order/edit-order/edit-order.component';
 import { OrderProductComponent } from './order-product/order-product.component';
 import { EditOrderProductComponent } from './order-product/edit-order-product/edit-order-product.component';
+
 
 @NgModule({
   declarations: [
