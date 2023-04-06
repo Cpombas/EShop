@@ -15,7 +15,6 @@ import { CategoryComponent } from './category/category.component';
 import { UserComponent } from './user/user.component';
 import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
-import { PaymentComponent } from './payment/payment.component';
 import { RegisterComponent } from './register/register.component';
 import { ProductComponent } from './product/product.component';
 import { EditCategoryComponent } from './category/edit-category/edit-category.component';
@@ -24,6 +23,7 @@ import { EditUserComponent } from './user/edit-user/edit-user.component';
 import { EditOrderComponent } from './order/edit-order/edit-order.component';
 import { OrderProductComponent } from './order-product/order-product.component';
 import { EditOrderProductComponent } from './order-product/edit-order-product/edit-order-product.component';
+import { PaymentDetailsComponent } from './payment-details/payment-details.component';
 
 
 @NgModule({
@@ -38,7 +38,6 @@ import { EditOrderProductComponent } from './order-product/edit-order-product/ed
     UserComponent,
     LoginComponent,
     ProfileComponent,
-    PaymentComponent,
     RegisterComponent,
     ProductComponent,
     EditCategoryComponent,
@@ -47,6 +46,7 @@ import { EditOrderProductComponent } from './order-product/edit-order-product/ed
     EditOrderComponent,
     OrderProductComponent,
     EditOrderProductComponent,
+    PaymentDetailsComponent,
   ],
   imports: [
     BrowserModule,
