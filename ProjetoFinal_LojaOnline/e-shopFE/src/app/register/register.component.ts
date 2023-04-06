@@ -18,7 +18,8 @@ export class RegisterComponent {
     lastname: "",
     age: undefined,
     email: "",
-    address: ""
+    address: "",
+    role: "Client"
   };
 
   constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {

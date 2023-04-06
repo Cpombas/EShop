@@ -30,7 +30,7 @@ namespace e_shop.Controllers
 
         [HttpPost("register")]
 
-        public async Task<ActionResult<User>> Register(RegisterUserDTO request)
+        public async Task<ActionResult<User>> Register([FromBody]RegisterUserDTO request)
         {
             CreatePasswordHash(request.Password, out byte[] passwordHash, out byte[] passwordSalt);
 
@@ -44,13 +44,13 @@ namespace e_shop.Controllers
                 Age = request.Age,
                 Email = request.Email,
                 Address = request.Address,
-                Role = "Client",
+                Role = "Client"
             };
 
             await _context.User.AddAsync(newUser);
             await _context.SaveChangesAsync();
 
-            return Ok(newUser);
+            return Ok(JsonConvert.SerializeObject(newUser));
         }
 
         [HttpPost("login")]
