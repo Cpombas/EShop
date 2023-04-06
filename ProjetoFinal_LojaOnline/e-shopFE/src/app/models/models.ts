@@ -42,3 +42,11 @@ export class OrderProduct {
     quantity: number | undefined;
     price: number | undefined;
 }
+
+export class Payment{
+    paymentId: number=0;
+    cardOwnerName: string='';
+    cardNumber: string='';
+    securityCode: string='';
+    expirationDate: string='';
+}

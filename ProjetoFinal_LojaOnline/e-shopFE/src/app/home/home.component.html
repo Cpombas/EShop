@@ -23,13 +23,8 @@
             <a class="nav-link active" aria-current="page" routerLink="/user">Users</a>
           </li>
           <li class="nav-item dropdown">
-            <button type="button" class="btn btn-primary position-relative" data-bs-toggle="offcanvas"
-              data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+            <button type="button" class="btn btn-primary position-relative" routerLink="/cart">
               <i class="bi bi-cart"></i>
-              <!-- <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                2+
-                <span class="visually-hidden">unread messages</span>
-              </span> -->
             </button>
           </li>
         </ul>
@@ -41,23 +36,7 @@
       </div>
     </div>
   </nav>
-  <!--Mini Cart-->
-  <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-    <div class="offcanvas-header">
-      <h5 id="offcanvasRightLabel">Mini Cart</h5>
-      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-    </div>
-    <div class="offcanvas-body">
-      <ul class="list-group">
-        <li class="list-group-item"><img src="" 
-          width="30" class="img-fluid me-1">Item 1 <i class="bi bi-x-circle-fill float-end"></i></li>
-        <li class="list-group-item"><img width="30" class="img-fluid me-1"
-            src="/images/pexels-harsch-shivam-2007647.jpg">Item 2 <i class="bi bi-x-circle-fill float-end"></i></li>
-      </ul>
-      <button type="button" class="btn btn-primary mt-2 float-end">Checkout</button>
-    </div>
-  </div>
-  <!--Mini Cart-->
+
   <div class="container-fluid" style="background-color: rgb(58, 175, 210);">
     <div class="container d-lg-flex justify-content-between align-items-center ps-lg-4">
       <div class="pb-lg-5 mb-lg-5 text-center text-lg-start text-lg-nowrap fw-bold">
