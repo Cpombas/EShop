@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../models/models';
 import { ProductListService } from '../services/products/products-list.service';
+import { CartService } from '../services/cart/cart.service';
 
 @Component({
   selector: 'app-product-list',
@@ -12,7 +13,7 @@ export class ProductListComponent implements OnInit{
   productToEdit?: Product; 
   visible = false;
 
-  constructor(private productListService: ProductListService) {}
+  constructor(private productListService: ProductListService, private cartService: CartService) {}
 
   ngOnInit(): void {
     this.productListService.getProductList()
@@ -33,5 +34,9 @@ export class ProductListComponent implements OnInit{
 
   toggleCollapse(): void {
     this.visible = !this.visible;
+  }
+  
+  addProductToCart(product: Product) {
+    this.cartService.addProduct(product);
   }
 }

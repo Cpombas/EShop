@@ -5,41 +5,36 @@
             <div class="d-grid w-50 mx-auto mb-3">
                 <button class="btn btn-outline-primary fs-4" routerLink="/payment" type="button">Order</button>
             </div>
-            <table class="table w-50 mx-auto table-bordered table-hover my-shadow">
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Product Name</th>
+                        <th>Price</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
                 <tbody>
-                    <tr>
-                        <td>Total Items</td>
-                        <td class="fs-5 fw-bold">  </td>
+                    <tr *ngFor="let product of products">
+                        <td>{{product.name}}</td>
+                        <td>{{product.price | currency}}</td>
+                        <td>
+                            <button (click)="removeProduct(product.productId)">Remove</button>
+                        </td>
                     </tr>
                     <tr>
-                        <td>Total Price</td>
-                        <td class="fs-5 fw-bold text-primary"> 12 </td>
-                    </tr>
-                    <tr>
-                        <td>Shipping Charges</td>
-                        <td class="fs-5 fw-bold text-primary"> 10 </td>
-                    </tr>
-                    <tr>
-                        <td>Discount</td>
-                        <td class="fs-5 fw-bold text-primary"> 11</td>
-                    </tr>
-                    <tr>
-                        <td>You Have to Pay</td>
-                        <td class="fs-5 fw-bold text-primary"> 13 </td>
+                        <td></td>
+                        <td>Total: {{getTotalPrice() | currency}}</td>
+                        <td>
+                            <button (click)="clearCart()">Clear Cart</button>
+                        </td>
                     </tr>
                 </tbody>
             </table>
-        </div>
-        <div class="current-cart-items w-75 mx-auto mt-5">
-            <h4>Cart Items</h4>
-            <div class="row mt-4 g-0">
-                <div class="col-6 py-3 px-2" > <!-- *ngFor="let cartItem of usersCart.cartItems -->
-                    <p>View products on shopping list</p>
-                </div>
-            </div>
+            
             <div class="d-grid w-25 mx-auto mb-3">
-                <button class="btn btn-outline-primary fs-4" type="button" routerLink="/home">Go back to Shopping!</button>
+                <button class="btn btn-outline-primary fs-4" type="button" routerLink="/home">Go back to
+                    Shopping!</button>
             </div>
         </div>
     </div>
-</div>  
