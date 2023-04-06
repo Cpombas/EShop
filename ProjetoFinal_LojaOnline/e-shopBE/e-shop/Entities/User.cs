@@ -32,7 +32,6 @@ namespace e_shop.Entities
         [MaxLength(100)]
         public string? Address { get; set; }
 
-        [Required]
         public string Role { get; set; }
 
         //public User (string userName, string password, int roleId)

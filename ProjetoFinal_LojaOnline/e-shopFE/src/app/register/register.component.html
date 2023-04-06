@@ -8,16 +8,38 @@
           <div class="card-body p-3">
             <div class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
   
-              <form style="width: 23rem;" [formGroup]="registerForm">
+              <form style="width: 23rem;">
   
                 <h3 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Register</h3>
   
-                <div class="form-outline mb-4">
-                  <input formControlName="username" type="text" placeholder="Username" id="formUserName" class="form-control form-control-lg" />
+                <div class="form-outline mb-1">
+                  <input name="username" [(ngModel)]="regObj.username" type="text" placeholder="Username" id="formUserName" 
+                  class="form-control form-control-lg" />
                 </div>
-  
-                <div class="form-outline mb-4">
-                  <input formControlName="password" type="password" placeholder="Password123" id="formPassword"
+                <small> Username is required! </small>
+                <div class="form-outline mt-4 mb-1">
+                  <input name="password" [(ngModel)]="regObj.password" type="password" placeholder="Password123" id="formPassword"
+                    class="form-control form-control-lg" />
+                </div>
+                <small> Password is required! </small>
+                <div class="form-outline mt-4 mb-1">
+                  <input name="firstname" [(ngModel)]="regObj.firstname" type="text" placeholder="First Name" id="formFName"
+                    class="form-control form-control-lg" />
+                </div>
+                <div class="form-outline mt-4 mb-1">
+                  <input name="lastname" [(ngModel)]="regObj.lastname" type="text" placeholder="Last Name" id="formLName"
+                    class="form-control form-control-lg" />
+                </div>
+                <div class="form-outline mt-4 mb-1">
+                  <input name="age" [(ngModel)]="regObj.age" type="text" placeholder="Your Age" id="formAge"
+                    class="form-control form-control-lg" />
+                </div>
+                <div class="form-outline mt-4 mb-1">
+                  <input name="email" [(ngModel)]="regObj.email" type="test" placeholder="Your Email" id="formEmail"
+                    class="form-control form-control-lg" />
+                </div>
+                <div class="form-outline mt-4 mb-1">
+                  <input name="address" [(ngModel)]="regObj.address" type="password" placeholder="Your Address" id="formAddress"
                     class="form-control form-control-lg" />
                 </div>
   

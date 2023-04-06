@@ -68,7 +68,28 @@ namespace e_shop.Models
 
     }
 
-    public class UpdateUserDTO
+    public class RegisterUserDTO
+    {
+        [Required]
+        public string? UserName { get; set; }
+
+        [Required]
+        public string? Password { get; set; }
+
+        public string? FirstName { get; set; }
+
+        public string? LastName { get; set; }
+
+        public int Age { get; set; }
+
+        public string? Email { get; set; }
+
+        public string? Address { get; set; }
+
+        public string Role { get; set; }
+    }
+
+        public class UpdateUserDTO
     {
         public int UserId { get; set; }
 

@@ -1,10 +1,12 @@
 ﻿using e_shop.DbContexts;
 using e_shop.Entities;
 using e_shop.Models;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using Newtonsoft.Json;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Security.Cryptography;
@@ -28,7 +30,7 @@ namespace e_shop.Controllers
 
         [HttpPost("register")]
 
-        public async Task<ActionResult<User>> Register(CreateUserDTO request)
+        public async Task<ActionResult<User>> Register(RegisterUserDTO request)
         {
             CreatePasswordHash(request.Password, out byte[] passwordHash, out byte[] passwordSalt);
 
@@ -42,8 +44,7 @@ namespace e_shop.Controllers
                 Age = request.Age,
                 Email = request.Email,
                 Address = request.Address,
-                //Role = request.Role,
-                Role = "Client"
+                Role = "Client",
             };
 
             await _context.User.AddAsync(newUser);
@@ -53,9 +54,9 @@ namespace e_shop.Controllers
         }
 
         [HttpPost("login")]
-        public async Task<ActionResult<string>> Login(ListUserAuthDTO request)
+        public async Task<ActionResult> Login([FromBody] ListUserAuthDTO request)
         {
-            var user = await _context.User. //Include("Role").
+            var user = await _context.User.
                 FirstOrDefaultAsync(u => u.UserName == request.UserName);
 
             if (user == null || !VerifyPasswordHash(request.Password, user.PasswordHash, user.PasswordSalt))
@@ -64,7 +65,7 @@ namespace e_shop.Controllers
             }
 
             string token = CreateToken(user);
-            return Ok(token);
+            return Ok(JsonConvert.SerializeObject(token));
         }
 
         private string CreateToken(User user)

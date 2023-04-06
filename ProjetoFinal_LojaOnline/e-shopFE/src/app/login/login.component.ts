@@ -13,36 +13,48 @@ import { AuthService } from '../services/auth.service';
 })
 export class LoginComponent implements OnInit{
   
-  loginForm!: FormGroup;
+  username: string = '';
+  password: string = '';
 
-  constructor(private fb: FormBuilder, private authService: AuthService) {
-  }
+  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {}
+  
 
   ngOnInit(): void {
-    this.loginForm = this.fb.group({
-      username: ['', Validators.required],
-      password: ['', Validators.required]
-    })
+    // this.loginForm = this.fb.group({
+    //   username: ['', Validators.required],
+    //   password: ['', Validators.required]
+    // })
   }
 
-  onLogin(){
-    if(this.loginForm.valid){
-      console.log(this.loginForm.value)
-      this.authService.login(this.loginForm.value)
-      .subscribe({
-        next:(res) => {
-          alert(res.message)
-          },
-          error:(err) => {
-            alert(err?.error.message)
-          }
-      })
-       
-    }
-    else{
-      ValidateForm.validateAllFormFields(this.loginForm);
-      alert("Your form is invalid!")
-    }
+  onLogin() {
+    this.authService.login(this.username, this.password).subscribe(res => {
+      console.log('res', res)
+      localStorage.setItem('token', res.token)
+      this.router.navigate(['/home'])
+    });
   }
+  
 }
+  // onLogin(){
+  //   if(this.loginForm.valid){
+  //     console.log(this.loginForm.value)
+  //     this.authService.login(this.loginForm.value)
+  //     .subscribe({
+  //       next:(res) => {
+  //         alert(res.message);
+  //         this.loginForm.reset();
+  //         this.router.navigate(['home']);
+  //         },
+  //         error:(err) => {
+  //           alert(err?.error.message)
+  //         }
+  //     })
+       
+  //   }
+  //   else{
+  //     ValidateForm.validateAllFormFields(this.loginForm);
+  //     alert("Your form is invalid!")
+  //   }
+  // }
+
 

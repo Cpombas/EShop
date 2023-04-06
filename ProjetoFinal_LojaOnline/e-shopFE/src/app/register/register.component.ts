@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import ValidateForm from '../shared/validateform';
 import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -10,35 +11,26 @@ import { AuthService } from '../services/auth.service';
 })
 export class RegisterComponent {
 
-  registerForm!: FormGroup;
+  regObj ={
+    username: "",
+    password: "",
+    firstname: "",
+    lastname: "",
+    age: undefined,
+    email: "",
+    address: ""
+  };
 
-  constructor(private fb: FormBuilder, private authService: AuthService) {
+  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
   }
 
   ngOnInit(): void {
-    this.registerForm = this.fb.group({
-      username: ['', Validators.required],
-      password: ['', Validators.required]
-    })
   }
 
   onRegister(){
-    if(this.registerForm.valid){
-      console.log(this.registerForm.value)
-      this.authService.login(this.registerForm.value)
-      .subscribe({
-        next:(res) => {
-          alert(res.message)
-          },
-          error:(err) => {
-            alert(err?.error.message)
-          }
-      })
-       
-    }
-    else{
-      ValidateForm.validateAllFormFields(this.registerForm);
-      alert("Your form is invalid!")
-    }
+    this.authService.register(this.regObj).subscribe(res => {
+      console.log('res', res)
+      this.router.navigate(['/login'])
+    });
   }
 }
