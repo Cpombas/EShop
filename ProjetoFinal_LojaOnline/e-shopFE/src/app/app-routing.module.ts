@@ -24,7 +24,7 @@ const routes: Routes = [
   { path: 'user', component: UserComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent},
-  { path: 'payment', component: PaymentComponent },
+  { path: 'payment', component: PaymentComponent},
   { path: '', redirectTo: '/home', pathMatch: 'full' }
   //{ path: '**', component: PageNotFoundComponent },
 ];
