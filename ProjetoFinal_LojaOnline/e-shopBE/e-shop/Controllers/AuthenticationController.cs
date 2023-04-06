@@ -50,7 +50,7 @@ namespace e_shop.Controllers
             await _context.User.AddAsync(newUser);
             await _context.SaveChangesAsync();
 
-            return Ok(JsonConvert.SerializeObject(newUser));
+            return Ok(newUser);
         }
 
         [HttpPost("login")]
