@@ -44,4 +44,8 @@ export class CategoryComponent implements OnInit{
   isAdmin(): boolean {
     return this.roleService.hasRole('Admin');
   }
+
+  isManager(): boolean {
+    return this.roleService.hasRole('Manager');
+  }
 }
