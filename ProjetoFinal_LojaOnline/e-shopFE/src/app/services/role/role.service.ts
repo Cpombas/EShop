@@ -1,17 +1,17 @@
 import { Injectable } from '@angular/core';
-import jwt_decode from 'jwt-decode';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RoleService {
 
-  constructor() { }
+  constructor(private jwtHelper: JwtHelperService) { }
 
   public hasRole(role: string): boolean {
     const token = localStorage.getItem('token');
     if (token) {
-      const decodedToken = jwt_decode(token) as { id: number, username: string, role: string };
+      const decodedToken = this.jwtHelper.decodeToken(token);
       return decodedToken.role === role;
     }
     return false;
@@ -20,7 +20,7 @@ export class RoleService {
   public getRole(): string {
     const token = localStorage.getItem('token');
     if (token) {
-      const decodedToken = jwt_decode(token) as { id: number, username: string, role: string };
+      const decodedToken = this.jwtHelper.decodeToken(token);
       return decodedToken.role;
     }
     return '';
