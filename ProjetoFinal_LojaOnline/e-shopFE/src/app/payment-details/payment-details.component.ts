@@ -54,13 +54,13 @@ export class PaymentDetailsComponent implements OnInit {
         orderProduct.price = product.price;
         orderProducts.push(orderProduct);
       }
-      this.orderProductService.createOrderProduct(orderProducts).subscribe(() => {
-        this.paymentDetailsService.submitPaymentDetails(this.payment).subscribe(() => {
-          localStorage.removeItem('cartProducts');
-          //this.toastr.success('Payment details submitted successfully!', 'Success');
-          this.router.navigate(['/home']);
+        this.orderProductService.createOrderProduct(orderProduct).subscribe(() => {
+          this.paymentDetailsService.submitPaymentDetails(this.payment).subscribe(() => {
+            localStorage.removeItem('cartProducts');
+            //this.toastr.success('Payment details submitted successfully!', 'Success');
+            this.router.navigate(['/home']);
+          });
         });
-      });
     });
   }
   
