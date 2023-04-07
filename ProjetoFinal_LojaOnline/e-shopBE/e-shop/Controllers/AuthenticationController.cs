@@ -73,6 +73,7 @@ namespace e_shop.Controllers
             List<Claim> claims = new List<Claim>()
             {
                 new Claim(ClaimTypes.Name, user.UserName),
+                new Claim(ClaimTypes.NameIdentifier, user.UserId.ToString()),
                 new Claim(ClaimTypes.Role, user.Role)
             };
 
