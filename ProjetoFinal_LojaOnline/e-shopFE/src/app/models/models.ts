@@ -11,7 +11,8 @@ export class Product {
     brand: string = '';
     description: string = '';
     categoryId?: number;
-    imageName: string = ''; 
+    imageName: string = '';
+    quantity: number = 1;
 }
 
 export class User {

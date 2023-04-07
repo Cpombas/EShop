@@ -21,7 +21,9 @@ export class CartComponent implements OnInit {
   getTotalPrice(): number {
     let total = 0;
     for (let product of this.products) {
-      total += product.price || 0;
+      if (product.price !== undefined) {
+        total += product.price;
+      }
     }
     return total;
   }

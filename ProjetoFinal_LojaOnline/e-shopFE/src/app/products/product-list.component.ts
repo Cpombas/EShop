@@ -37,6 +37,8 @@ export class ProductListComponent implements OnInit{
   }
   
   addProductToCart(product: Product) {
-    this.cartService.addProduct(product);
+    this.productToEdit = product;
+    this.productToEdit.quantity += 1;
+    this.cartService.addProduct(this.productToEdit);
   }
 }

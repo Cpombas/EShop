@@ -11,6 +11,7 @@
                     <tr>
                         <th>Product Name</th>
                         <th>Price</th>
+                        <th>Quantity</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -18,10 +19,12 @@
                     <tr *ngFor="let product of products">
                         <td>{{product.name}}</td>
                         <td>{{product.price | currency}}</td>
+                        <td>{{product.quantity}}</td>
                         <td>
-                            <button (click)="removeProduct(product.productId)">Remove</button>
+                          <button (click)="removeProduct(product.productId)">Remove</button>
                         </td>
-                    </tr>
+                      </tr>
+                      
                     <tr>
                         <td></td>
                         <td>Total: {{getTotalPrice() | currency}}</td>

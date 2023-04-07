@@ -12,18 +12,32 @@ export class CartService {
   constructor() { }
 
   addProduct(product: Product): void {
-    this.cart.push(product);
+    const existingProduct = this.cart.find(p => p.productId === product.productId);
+    if (existingProduct) {
+      existingProduct.quantity += 1;
+    } else {
+      product.quantity = 1;
+      this.cart.push(product);
+    }
   }
 
   removeProduct(productId: number): void {
-    this.cart = this.cart.filter(product => product.productId !== productId);
+    const existingProduct = this.cart.find(p => p.productId === productId);
+    if (existingProduct) {
+      existingProduct.quantity -= 1;
+      if (existingProduct.quantity === 0) {
+        const productIndex = this.cart.indexOf(existingProduct);
+        this.cart.splice(productIndex, 1);
+      }
+    }
+  }
+
+  clearCart(): void {
+    this.cart = [];
   }
 
   getCartProducts(): Product[] {
     return this.cart;
   }
 
-  clearCart(): void {
-    this.cart = [];
-  }
 }
