@@ -9,9 +9,6 @@ namespace e_shop.Entities
         [Key]
         public int PaymentDetailId { get; set; }
 
-        [ForeignKey("UserId")]
-        public User? User { get; set; }
-
         public int UserId { get; set; }
 
         [Required]

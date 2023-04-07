@@ -27,7 +27,7 @@
           <input type="text" class="form-control" id="securityCode" [(ngModel)]="payment.securityCode" name="securityCode">
         </div>
         <div class="d-grid gap-2 col-6 mx-auto mt-4">
-          <button type="submit" class="btn btn-primary btn-lg">Submit Payment</button>
+          <button type="submit" class="btn btn-primary btn-lg" (click)="onSubmit()">Submit Payment</button>
         </div>
       </form>
     </div>

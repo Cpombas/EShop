@@ -4,7 +4,7 @@ import { OrderService } from '../services/order/order.service';
 import { OrderProductService } from '../services/order-product/order-product.service';
 import { PaymentDetailsService } from '../services/payment-details/payment-details.service';
 import { Order, OrderProduct } from '../models/models';
-import { ToastrService } from 'ngx-toastr';
+//import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-payment-details',
@@ -29,8 +29,8 @@ export class PaymentDetailsComponent implements OnInit {
   constructor(private orderService: OrderService,
               private orderProductService: OrderProductService,
               private paymentDetailsService: PaymentDetailsService,
-              private router: Router,
-              private toastr: ToastrService) { }
+              private router: Router){}
+              //private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.products = JSON.parse(localStorage.getItem('cartProducts') || '[]');
@@ -57,7 +57,7 @@ export class PaymentDetailsComponent implements OnInit {
       this.orderProductService.createOrderProduct(orderProducts).subscribe(() => {
         this.paymentDetailsService.submitPaymentDetails(this.payment).subscribe(() => {
           localStorage.removeItem('cartProducts');
-          this.toastr.success('Payment details submitted successfully!', 'Success');
+          //this.toastr.success('Payment details submitted successfully!', 'Success');
           this.router.navigate(['/home']);
         });
       });
