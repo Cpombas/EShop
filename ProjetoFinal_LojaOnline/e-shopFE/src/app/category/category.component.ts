@@ -18,7 +18,7 @@ export class CategoryComponent implements OnInit{
   visible = false;
 
   constructor(private categoryService: CategoryService, private authService: AuthService, 
-    private router: Router, private roleService: RoleService) {}
+    private router: Router) {}
 
   ngOnInit(): void {
     this.categoryService.getCategoryList()
@@ -39,13 +39,5 @@ export class CategoryComponent implements OnInit{
 
   toggleCollapse(): void {
     this.visible = !this.visible;
-  }
-
-  isAdmin(): boolean {
-    return this.roleService.hasRole('Admin');
-  }
-
-  isManager(): boolean {
-    return this.roleService.hasRole('Manager');
   }
 }

@@ -20,7 +20,7 @@
                     <a class="nav-link active" aria-current="page" routerLink="/profile">Profile</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" routerLink="/user" *ngIf="isAdmin()">Users</a>
+                    <a class="nav-link active" aria-current="page" routerLink="/user">Users</a>
                 </li>
                 <li class="nav-item dropdown">
                     <button type="button" class="btn btn-primary position-relative" routerLink="/cart">
@@ -45,7 +45,7 @@
 
 <div class="container-fluid" style="background-color: rgb(58, 175, 210);">
     <div class="container d-lg-flex  ps-lg-4 justify-content-center">
-        <div class="row mb-lg-5 mt-lg-5 fw-bold " *ngIf="isAdmin() || isManager()">
+        <div class="row mb-lg-5 mt-lg-5 fw-bold ">
             <div class="col-md-12 text-wrap text-center ">
                 <button class="btn btn-primary btn-block " (click)="toggleCollapse()">Manage Category<i class="ci-arrow-right"></i></button>
                 <div *ngIf="visible" class="mt-3">
