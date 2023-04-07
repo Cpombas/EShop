@@ -23,7 +23,7 @@ export class CheckoutComponent implements OnInit {
   }
 
   confirmOrder(): void {
-    // Code to confirm the order goes here
+    localStorage.setItem('cartProducts', JSON.stringify(this.products));
     this.router.navigate(['/payment']);
   }
 
