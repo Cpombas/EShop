@@ -23,6 +23,7 @@ import { EditUserComponent } from './user/edit-user/edit-user.component';
 import { EditOrderComponent } from './order/edit-order/edit-order.component';
 import { OrderProductComponent } from './order-product/order-product.component';
 import { EditOrderProductComponent } from './order-product/edit-order-product/edit-order-product.component';
+import { PaymentDetailsComponent } from './payment-details/payment-details.component';
 
 
 
@@ -46,6 +47,7 @@ import { EditOrderProductComponent } from './order-product/edit-order-product/ed
     EditOrderComponent,
     OrderProductComponent,
     EditOrderProductComponent,
+    PaymentDetailsComponent,
   ],
   imports: [
     BrowserModule,
