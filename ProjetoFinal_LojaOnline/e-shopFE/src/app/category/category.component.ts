@@ -16,7 +16,8 @@ export class CategoryComponent implements OnInit{
   categoryToEdit?: Category; 
   visible = false;
 
-  constructor(private categoryService: CategoryService, private authService: AuthService, private router: Router) {}
+  constructor(private categoryService: CategoryService, private authService: AuthService, 
+    private router: Router) {}
 
   ngOnInit(): void {
     this.categoryService.getCategoryList()
