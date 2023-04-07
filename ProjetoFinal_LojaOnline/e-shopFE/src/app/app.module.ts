@@ -4,7 +4,6 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
-import { JwtHelperService } from '@auth0/angular-jwt';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -61,12 +60,10 @@ import { TokenInterceptor } from './services/token-interceptor.service';
     FormsModule,
     RouterModule,
     ReactiveFormsModule,
-    ToastrModule,
-    
+    ToastrModule
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
-    JwtHelperService
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })

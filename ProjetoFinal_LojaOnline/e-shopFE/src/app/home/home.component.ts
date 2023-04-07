@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { RoleService } from '../services/role/role.service';
 
 @Component({
   selector: 'app-home',
@@ -7,7 +6,5 @@ import { RoleService } from '../services/role/role.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
-  constructor() { }
-}
 
- 
+}

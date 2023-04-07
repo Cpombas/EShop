@@ -5,7 +5,6 @@ import { Category } from '../models/models';
 import { CategoryService } from '../services/category/category.service';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
-import { RoleService } from '../services/role/role.service';
 
 @Component({
   selector: 'app-category',
@@ -17,8 +16,7 @@ export class CategoryComponent implements OnInit{
   categoryToEdit?: Category; 
   visible = false;
 
-  constructor(private categoryService: CategoryService, private authService: AuthService, 
-    private router: Router) {}
+  constructor(private categoryService: CategoryService, private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
     this.categoryService.getCategoryList()

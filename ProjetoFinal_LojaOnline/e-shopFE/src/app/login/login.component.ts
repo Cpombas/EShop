@@ -28,6 +28,7 @@ export class LoginComponent implements OnInit{
 
   onLogin() {
     this.authService.login(this.username, this.password);
+    console.log(this.authService.getToken());
     this.router.navigate(['/home']);
     };
   }
