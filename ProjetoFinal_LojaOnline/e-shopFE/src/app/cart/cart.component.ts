@@ -22,7 +22,7 @@ export class CartComponent implements OnInit {
     let total = 0;
     for (let product of this.products) {
       if (product.price !== undefined) {
-        total += product.price;
+        total += product.price * product.quantity;
       }
     }
     return total;
