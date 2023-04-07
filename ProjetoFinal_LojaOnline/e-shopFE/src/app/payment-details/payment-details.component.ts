@@ -45,22 +45,21 @@ export class PaymentDetailsComponent implements OnInit {
   
     this.orderService.createOrder(order).subscribe((createdOrders: Order[]) => {
       const createdOrder = createdOrders[0];
-      const orderProducts: OrderProduct[] = [];
+      //const orderProducts: OrderProduct[] = [];
       for (const product of this.products) {
         const orderProduct = new OrderProduct();
         orderProduct.orderId = createdOrder.orderId;
         orderProduct.productId = product.productId;
         orderProduct.quantity = product.quantity;
         orderProduct.price = product.price;
-        orderProducts.push(orderProduct);
+        //orderProducts.push(orderProduct);
+        this.orderProductService.createOrderProduct(orderProduct);
       }
-        this.orderProductService.createOrderProduct(orderProduct).subscribe(() => {
           this.paymentDetailsService.submitPaymentDetails(this.payment).subscribe(() => {
             localStorage.removeItem('cartProducts');
             //this.toastr.success('Payment details submitted successfully!', 'Success');
             this.router.navigate(['/home']);
           });
-        });
     });
   }
   
