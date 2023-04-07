@@ -5,6 +5,7 @@ import { Category } from '../models/models';
 import { CategoryService } from '../services/category/category.service';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
+import { RoleService } from '../services/role/role.service';
 
 @Component({
   selector: 'app-category',
@@ -17,7 +18,7 @@ export class CategoryComponent implements OnInit{
   visible = false;
 
   constructor(private categoryService: CategoryService, private authService: AuthService, 
-    private router: Router) {}
+    private router: Router, private roleService: RoleService) {}
 
   ngOnInit(): void {
     this.categoryService.getCategoryList()
@@ -38,5 +39,9 @@ export class CategoryComponent implements OnInit{
 
   toggleCollapse(): void {
     this.visible = !this.visible;
+  }
+
+  isAdmin(): boolean {
+    return this.roleService.hasRole('Admin');
   }
 }
