@@ -26,6 +26,7 @@ import { OrderProductComponent } from './order-product/order-product.component';
 import { EditOrderProductComponent } from './order-product/edit-order-product/edit-order-product.component';
 import { PaymentDetailsComponent } from './payment-details/payment-details.component';
 import { CheckoutComponent } from './checkout/checkout.component';
+import { TokenInterceptor } from './services/token-interceptor.service';
 
 
 
@@ -61,7 +62,9 @@ import { CheckoutComponent } from './checkout/checkout.component';
     ReactiveFormsModule,
     ToastrModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

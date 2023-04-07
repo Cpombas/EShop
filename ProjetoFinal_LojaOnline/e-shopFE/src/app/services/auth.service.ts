@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, map, of } from 'rxjs';
+import { Observable, map, of, tap } from 'rxjs';
 import { User } from '../models/models';
 import { UserService } from './user/user.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
@@ -34,7 +34,14 @@ export class AuthService {
   login(username: string, password: string): Observable<any> {
     const body = { username, password };
     return this.httpClient.post(`${this.baseUrl}login`, body)
+      .pipe(
+        tap((res: any) => {
+          console.log('res', res);
+          localStorage.setItem('token', res.token);
+        })
+      );
   }
+  
 
   public logout() {
     this.token = '';
@@ -42,8 +49,12 @@ export class AuthService {
   }
 
   public getToken(): string {
-    if (this.token === '') {
-      this.token = localStorage.getItem('token') as string;
+    if (!this.token) {
+      const token = localStorage.getItem('token');
+      if (!token) {
+        throw new Error('No token found in local storage.');
+      }
+      this.token = token;
     }
     return this.token;
   }
