@@ -11,7 +11,7 @@ export class RoleService {
   public hasRole(role: string): boolean {
     const token = localStorage.getItem('token');
     if (token) {
-      const decodedToken = jwt_decode(token) as { id: number, username: string, role: string };;
+      const decodedToken = jwt_decode(token) as { id: number, username: string, role: string };
       return decodedToken.role === role;
     }
     return false;
@@ -20,7 +20,7 @@ export class RoleService {
   public getRole(): string {
     const token = localStorage.getItem('token');
     if (token) {
-      const decodedToken = jwt_decode(token) as { id: number, username: string, role: string };;
+      const decodedToken = jwt_decode(token) as { id: number, username: string, role: string };
       return decodedToken.role;
     }
     return '';
