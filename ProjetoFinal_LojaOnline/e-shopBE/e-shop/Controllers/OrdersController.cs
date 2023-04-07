@@ -1,15 +1,18 @@
 ﻿using e_shop.DbContexts;
 using e_shop.Entities;
 using e_shop.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Data;
 
 namespace e_shop.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Roles = "Admin, Manager")]
     public class OrdersController : ControllerBase
     {
         private readonly EShopContext _context;
@@ -36,9 +39,8 @@ namespace e_shop.Controllers
 
             return orders;
         }
-
+        
         [HttpGet("ActiveOrdersByOrderId")]
-
         public async Task<IActionResult> GetActiveOrdersByOrderId(int id)
         {
             var order = await _context.Orders.
@@ -48,7 +50,7 @@ namespace e_shop.Controllers
         }
 
         [HttpGet("OrderedProductsByOrderId")]
-
+        [AllowAnonymous]
         public async Task<IActionResult> GetOrderedProductsByOrderId(int id)
         {
             var order = await _context.OrderProducts.
@@ -58,7 +60,7 @@ namespace e_shop.Controllers
         }
 
         [HttpGet("ActiveOrdersByUserId")]
-
+        [AllowAnonymous]
         public async Task<IActionResult> GetActiveOrdersByUserId(int id)
         {
             var order = await _context.Orders.

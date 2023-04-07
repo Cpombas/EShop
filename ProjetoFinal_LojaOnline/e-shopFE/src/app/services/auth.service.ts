@@ -8,6 +8,7 @@ import { Observable, map } from 'rxjs';
 export class AuthService {
 
   private baseUrl:string = "https://localhost:7004/api/Authentication/"
+  private token: string = '';
 
   constructor(private httpClient: HttpClient) { }
 
@@ -18,6 +19,22 @@ export class AuthService {
   login(username: string, password: string): Observable<any> {
     const body = { username, password };
     return this.httpClient.post(`${this.baseUrl}login`, body)
+  }
+
+  public logout() {
+    this.token = '';
+    localStorage.removeItem('token');
+  }
+
+  public getToken(): string {
+    if (this.token === '') {
+      this.token = localStorage.getItem('token') as string;
+    }
+    return this.token;
+  }
+
+  public isLoggedIn(): boolean {
+    return this.getToken() !== null;
   }
 }
 

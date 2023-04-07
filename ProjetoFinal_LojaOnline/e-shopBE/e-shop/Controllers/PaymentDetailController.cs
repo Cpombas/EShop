@@ -1,6 +1,7 @@
 ﻿using e_shop.DbContexts;
 using e_shop.Entities;
 using e_shop.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -9,6 +10,7 @@ namespace e_shop.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize (Roles = "Admin, Manager")]
     public class PaymentDetailController : ControllerBase
     {
         private readonly EShopContext _context;
@@ -37,6 +39,7 @@ namespace e_shop.Controllers
         }
 
         [HttpPost]
+        [AllowAnonymous]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
 

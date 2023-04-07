@@ -19,7 +19,7 @@ export class EditOrderProductComponent {
 
   createOrderProduct(orderprod: OrderProduct) {
     this.orderProductService
-    .createOrderProduct([orderprod])
+    .createOrderProduct(orderprod)
     .subscribe({
       next: (res) => {
         (ordersprods: OrderProduct[]) => this.orderProdUpdated.emit(ordersprods)

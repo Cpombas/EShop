@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Data;
 using System.Net;
 using System.Security.Cryptography;
 using static e_shop.Models.ListUserDTO;
@@ -16,6 +17,7 @@ namespace e_shop.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize (Roles = "Admin")]
     public class UserController : ControllerBase
     {
         private readonly EShopContext _context;
@@ -130,7 +132,7 @@ namespace e_shop.Controllers
         //}
 
 
-        [HttpDelete("id"), Authorize(Roles = "Admin")]
+        [HttpDelete("id")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
 

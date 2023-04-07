@@ -27,22 +27,22 @@ export class PaymentDetailsComponent implements OnInit {
   products: any[] = [];
 
   constructor(private orderService: OrderService,
-              private orderProductService: OrderProductService,
-              private paymentDetailsService: PaymentDetailsService,
-              private router: Router){}
-              //private toastr: ToastrService) { }
+    private orderProductService: OrderProductService,
+    private paymentDetailsService: PaymentDetailsService,
+    private router: Router) { }
+  //private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.products = JSON.parse(localStorage.getItem('cartProducts') || '[]');
   }
 
   onSubmit(): void {
-    const order = new Order();
-    order.userId = 4; // set the user ID for the order
-    order.dateOfOrder = new Date(); // set the order date to the current date
-    order.totalPrice = this.products.reduce((total, product) => total + product.price, 0); // calculate the total price of the order
-    order.orderStatus = 'Pending'; // set the initial order status
-  
+    const order = new Order(); // set the user ID using the token in the local storage (has username, use getUserByName to get all, then get the id)
+    order.userId = 4; // PS: Maybe add a claim to store the id
+    order.dateOfOrder = new Date();
+    order.totalPrice = this.products.reduce((total, product) => total + product.price, 0);
+    order.orderStatus = 'Pending';
+
     this.orderService.createOrder(order).subscribe((createdOrders: Order[]) => {
       const createdOrder = createdOrders[0];
       //const orderProducts: OrderProduct[] = [];
@@ -53,14 +53,14 @@ export class PaymentDetailsComponent implements OnInit {
         orderProduct.quantity = product.quantity;
         orderProduct.price = product.price;
         //orderProducts.push(orderProduct);
-        this.orderProductService.createOrderProduct(orderProduct);
+        this.orderProductService.createOrderProduct(orderProduct)
       }
-          this.paymentDetailsService.submitPaymentDetails(this.payment).subscribe(() => {
-            localStorage.removeItem('cartProducts');
-            //this.toastr.success('Payment details submitted successfully!', 'Success');
-            this.router.navigate(['/home']);
-          });
+      //this.orderProductService.createOrderProduct(orderProducts).subscribe(() => {
+      this.paymentDetailsService.submitPaymentDetails(this.payment).subscribe(() => {
+        localStorage.removeItem('cartProducts');
+        //this.toastr.success('Payment details submitted successfully!', 'Success');  Isn't working properly for now
+        this.router.navigate(['/home']);
+      });
     });
   }
-  
 }
