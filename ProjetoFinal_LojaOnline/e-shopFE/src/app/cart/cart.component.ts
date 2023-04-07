@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../models/models';
 import { CartService } from '../services/cart/cart.service';
+import { AuthService } from '../services/auth.service';
+import { Route, Router } from '@angular/router';
 
 
 @Component({
@@ -37,4 +39,5 @@ export class CartComponent implements OnInit {
     this.cartService.clearCart();
     this.products = [];
   }
+
 }

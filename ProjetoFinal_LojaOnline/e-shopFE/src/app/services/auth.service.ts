@@ -78,8 +78,8 @@ export class AuthService {
   }
   
 
-  public isLoggedIn(): boolean {
-    return this.getToken() !== null;
+  public isLoggedOff(): boolean {
+    return this.getToken() === '';
   }
 }
 
