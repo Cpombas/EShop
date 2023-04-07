@@ -24,6 +24,7 @@ import { EditOrderComponent } from './order/edit-order/edit-order.component';
 import { OrderProductComponent } from './order-product/order-product.component';
 import { EditOrderProductComponent } from './order-product/edit-order-product/edit-order-product.component';
 import { PaymentDetailsComponent } from './payment-details/payment-details.component';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 
 
@@ -48,6 +49,7 @@ import { PaymentDetailsComponent } from './payment-details/payment-details.compo
     OrderProductComponent,
     EditOrderProductComponent,
     PaymentDetailsComponent,
+    CheckoutComponent,
   ],
   imports: [
     BrowserModule,

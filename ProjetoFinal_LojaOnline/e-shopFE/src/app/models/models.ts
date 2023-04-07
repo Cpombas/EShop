@@ -45,9 +45,12 @@ export class OrderProduct {
 }
 
 export class Payment{
-    paymentId: number=0;
-    cardOwnerName: string='';
-    cardNumber: string='';
-    securityCode: string='';
-    expirationDate: string='';
+    paymentId: number = 0;
+            userId: number = 0;
+            cardOwnerName: string = '';
+            email: string = '';
+            address: string = '';
+            cardNumber: string = '';
+            expirationDate: string = '';
+            securityCode: string = '';
 }
