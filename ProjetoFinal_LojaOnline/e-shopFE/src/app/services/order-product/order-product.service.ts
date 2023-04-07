@@ -17,7 +17,7 @@ export class OrderProductService {
     return this.httpClient.get<OrderProduct[]>(`${this.baseUrl}`);
   }
 
-  public createOrderProduct(orderprod: OrderProduct) :  Observable<OrderProduct[]> {
+  public createOrderProduct(orderprod: OrderProduct[]) :  Observable<OrderProduct[]> {
     return this.httpClient.post<OrderProduct[]>(`${this.baseUrl}`, orderprod);
   }
 

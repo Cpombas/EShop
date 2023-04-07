@@ -8,12 +8,11 @@ import { Payment } from 'src/app/models/models';
 })
 export class PaymentDetailsService {
 
-  private paymentUrl = '/api/payments'; // replace with your backend API endpoint for payments
+  private baseUrl = "https://localhost:7004/api/PaymentDetail";
 
-  constructor(private http: HttpClient) { }
+  constructor(private httpClient: HttpClient) { }
 
-  createPayment(payment: Payment): Observable<Payment> {
-    return this.http.post<Payment>(this.paymentUrl, payment);
+  public submitPaymentDetails(payment: Payment): Observable<Payment> {
+    return this.httpClient.post<Payment>(`${this.baseUrl}`, payment);
   }
-
 }
