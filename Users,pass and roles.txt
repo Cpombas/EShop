@@ -1,5 +1,5 @@
-UserName / Password
+UserName / Password / Role
 
-Pedro ---- 123123
-Manel ---- 456456
-Luis ---- 789789
+Pedro ---- 123123 ---- Admin
+Manel ---- 456456 ---- Manager
+Luis ---- 789789 ---- Client
