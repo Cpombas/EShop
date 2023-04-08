@@ -37,7 +37,7 @@ export class AuthService {
       .pipe(
         tap((res: any) => {
           console.log('res', res);
-          localStorage.setItem('token', res);
+          localStorage.setItem('token', res.token);
         })
       );
   }
@@ -49,15 +49,14 @@ export class AuthService {
   }
 
   public getToken(): string {
-    if (!this.token) {
-      const token = localStorage.getItem('token');
-      if (!token) {
-        throw new Error('No token found in local storage.');
-      }
-      this.token = token;
+    const token = localStorage.getItem('token');
+    if (!token) {
+      throw new Error('No token found in local storage.');
     }
+    this.token = token;
     return this.token;
   }
+  
 
   public getUser(): Observable<User | undefined> {
     const token = this.getToken();

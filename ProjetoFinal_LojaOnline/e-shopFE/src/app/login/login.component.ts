@@ -27,12 +27,12 @@ export class LoginComponent implements OnInit{
   }
 
   onLogin() {
-    this.authService.login(this.username, this.password);
-    console.log(this.authService.getToken());
-    this.router.navigate(['/home']);
-    };
+    this.authService.login(this.username, this.password).subscribe(() => {
+      this.router.navigate(['/home']);
+    });
   }
-  
+}
+
   // onLogin(){
   //   if(this.loginForm.valid){
   //     console.log(this.loginForm.value)
